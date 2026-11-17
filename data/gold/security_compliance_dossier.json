@@ -1,0 +1,63 @@
+{
+  "dossier_id": "DOSSIER-CMMC-L2-2026-Q4",
+  "generated_at_utc": "2026-11-17T21:32:09Z",
+  "organization": "org-enterprise-it",
+  "enclave_id": "enclave-cui-prod",
+  "site_id": "site-mfg-01",
+  "domain_fqdn": "example-mfg.local",
+  "framework": "NIST SP 800-171 Rev 2 / CMMC 2.0 Level 2",
+  "gate_status": "PASSED",
+  "controls_evaluated": 6,
+  "controls_passed": 6,
+  "compliance_score_pct": 100.0,
+  "control_verifications": [
+    {
+      "control_id": "3.1.1 / 3.5.3",
+      "family": "Access Control & Identification/Authentication",
+      "requirement": "Phishing-resistant MFA (FIDO2/PIV) & compliant device Conditional Access for enclave-cui-prod",
+      "artifact": "01-cmmc-enclave-iac/identity_conditional_access.tf",
+      "passed": true,
+      "itil_pmi_outcome": "ITIL 4 Access Mgmt / Zero Unauthorized CUI Sessions"
+    },
+    {
+      "control_id": "3.3.1 / 3.3.2",
+      "family": "Audit and Accountability",
+      "requirement": "Immutable SIEM audit workspace with >=365-day log retention and disabled public ingestion",
+      "artifact": "01-cmmc-enclave-iac/main.tf",
+      "passed": true,
+      "itil_pmi_outcome": "ITIL 4 Information Security Mgmt / C3PAO Audit Evidence"
+    },
+    {
+      "control_id": "3.4.1 / 3.4.2",
+      "family": "Configuration Management",
+      "requirement": "Mandatory CMDB/FinOps tagging and Windows Server DSC hardening (SMBv1 disabled, SMBv3 signed)",
+      "artifact": "01-cmmc-enclave-iac/powershell/EnclaveServerBaselineDSC.ps1",
+      "passed": true,
+      "itil_pmi_outcome": "ITIL 4 Service Configuration Mgmt / Drift Prevention"
+    },
+    {
+      "control_id": "3.8.9",
+      "family": "Media Protection & Recovery",
+      "requirement": "Locked immutable GeoRedundant Recovery Services Vault with public network access disabled",
+      "artifact": "01-cmmc-enclave-iac/main.tf",
+      "passed": true,
+      "itil_pmi_outcome": "ITIL 4 Service Continuity Mgmt / ERP & PLM Cutover Rollback Safety"
+    },
+    {
+      "control_id": "3.13.1 / 3.13.6",
+      "family": "System and Communications Protection",
+      "requirement": "Default-deny NSG micro-segmentation across RFC-5737 zones (192.0.2.0/24, 198.51.100.0/24)",
+      "artifact": "01-cmmc-enclave-iac/network_enclave.tf",
+      "passed": true,
+      "itil_pmi_outcome": "ITIL 4 Infrastructure & Platform Mgmt / Enclave Boundary Isolation"
+    },
+    {
+      "control_id": "3.13.8 / 3.13.11",
+      "family": "Cryptographic Protection",
+      "requirement": "FIPS 140-2/3 HSM-backed Premium Key Vault, 4096-bit RSA-HSM TLS certs, and Windows FIPS policy",
+      "artifact": "01-cmmc-enclave-iac/keyvault_tls.tf",
+      "passed": true,
+      "itil_pmi_outcome": "PMI Technical Risk Mitigation / Zero Expired Cert Cutover Outages"
+    }
+  ]
+}

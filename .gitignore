@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Pytest & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Spark / Delta Lake local artifacts
+spark-warehouse/
+metastore_db/
+derby.log
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

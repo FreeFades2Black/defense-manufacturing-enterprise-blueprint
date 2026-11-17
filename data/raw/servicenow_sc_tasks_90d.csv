@@ -1,0 +1,301 @@
+sc_task_number,ritm_number,opened_at,catalog_item,category,site_id,enclave_id,reassignment_count,manual_approval_steps,fulfillment_hours,sla_breached,automation_candidate
+SCTASK200001,RITM300001,2026-09-24T18:00:40Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,24.69,False,True
+SCTASK200002,RITM300002,2026-09-10T03:53:15Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,50.42,True,True
+SCTASK200003,RITM300003,2026-10-15T22:27:03Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,52.81,True,True
+SCTASK200004,RITM300004,2026-11-07T13:40:19Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,21.88,False,False
+SCTASK200005,RITM300005,2026-10-30T19:12:14Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,20.0,False,True
+SCTASK200006,RITM300006,2026-08-30T14:46:29Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,19.13,False,False
+SCTASK200007,RITM300007,2026-09-15T22:27:57Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,23.68,False,True
+SCTASK200008,RITM300008,2026-10-10T19:32:56Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,40.6,True,True
+SCTASK200009,RITM300009,2026-10-26T16:32:30Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,55.71,True,True
+SCTASK200010,RITM300010,2026-10-09T23:06:33Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,33.76,False,True
+SCTASK200011,RITM300011,2026-09-23T02:25:08Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,33.69,False,True
+SCTASK200012,RITM300012,2026-10-04T02:43:04Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,49.14,True,True
+SCTASK200013,RITM300013,2026-11-09T15:19:30Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,19.15,False,False
+SCTASK200014,RITM300014,2026-10-07T11:18:45Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,24.81,False,True
+SCTASK200015,RITM300015,2026-10-07T22:35:44Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,37.5,True,True
+SCTASK200016,RITM300016,2026-10-16T01:06:37Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,28.63,False,True
+SCTASK200017,RITM300017,2026-10-26T14:17:25Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,80.54,True,True
+SCTASK200018,RITM300018,2026-09-01T05:17:57Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,39.12,True,True
+SCTASK200019,RITM300019,2026-09-15T05:56:02Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,50.34,True,True
+SCTASK200020,RITM300020,2026-09-19T09:27:51Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,54.47,True,True
+SCTASK200021,RITM300021,2026-08-24T04:22:13Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,33.22,False,True
+SCTASK200022,RITM300022,2026-09-18T23:23:19Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,53.46,True,True
+SCTASK200023,RITM300023,2026-08-19T00:19:47Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,11.51,False,False
+SCTASK200024,RITM300024,2026-08-28T10:58:59Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,41.81,True,True
+SCTASK200025,RITM300025,2026-08-25T06:32:49Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,77.24,True,True
+SCTASK200026,RITM300026,2026-10-22T10:25:42Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,49.36,True,True
+SCTASK200027,RITM300027,2026-09-15T07:24:12Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,22.0,False,True
+SCTASK200028,RITM300028,2026-10-26T20:43:40Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,27.21,False,True
+SCTASK200029,RITM300029,2026-09-18T12:24:26Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,74.31,True,True
+SCTASK200030,RITM300030,2026-09-23T08:10:00Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,53.33,True,True
+SCTASK200031,RITM300031,2026-09-30T21:22:17Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,52.87,True,True
+SCTASK200032,RITM300032,2026-09-06T13:59:04Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,67.74,True,True
+SCTASK200033,RITM300033,2026-09-09T02:21:39Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,54.47,True,True
+SCTASK200034,RITM300034,2026-08-23T12:16:04Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,31.08,False,True
+SCTASK200035,RITM300035,2026-09-18T01:27:21Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,17.5,False,False
+SCTASK200036,RITM300036,2026-09-05T06:50:05Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,48.58,True,True
+SCTASK200037,RITM300037,2026-11-14T08:26:20Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,25.85,False,True
+SCTASK200038,RITM300038,2026-09-01T09:33:24Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,34.96,False,True
+SCTASK200039,RITM300039,2026-10-20T05:26:08Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,22.23,False,False
+SCTASK200040,RITM300040,2026-09-15T17:00:15Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,24.43,False,True
+SCTASK200041,RITM300041,2026-09-01T15:54:04Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,42.79,True,True
+SCTASK200042,RITM300042,2026-10-11T15:41:20Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,41.17,True,True
+SCTASK200043,RITM300043,2026-09-04T03:01:47Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,44.1,True,True
+SCTASK200044,RITM300044,2026-09-18T04:30:42Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,10.03,False,False
+SCTASK200045,RITM300045,2026-08-31T04:32:32Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,34.15,False,True
+SCTASK200046,RITM300046,2026-08-20T14:16:14Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,20.1,False,False
+SCTASK200047,RITM300047,2026-09-25T13:31:47Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,77.92,True,True
+SCTASK200048,RITM300048,2026-11-10T13:26:17Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,52.16,True,True
+SCTASK200049,RITM300049,2026-09-02T04:00:37Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,70.99,True,True
+SCTASK200050,RITM300050,2026-08-24T18:02:13Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,67.22,True,True
+SCTASK200051,RITM300051,2026-09-28T06:35:56Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,10.05,False,False
+SCTASK200052,RITM300052,2026-08-20T08:28:46Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,46.0,True,True
+SCTASK200053,RITM300053,2026-11-03T11:15:36Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,22.36,False,True
+SCTASK200054,RITM300054,2026-08-30T03:58:01Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,9.69,False,False
+SCTASK200055,RITM300055,2026-10-25T14:53:44Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,34.82,False,True
+SCTASK200056,RITM300056,2026-11-05T21:16:19Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,77.51,True,True
+SCTASK200057,RITM300057,2026-10-29T02:54:16Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,74.74,True,True
+SCTASK200058,RITM300058,2026-09-10T05:04:37Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,53.48,True,True
+SCTASK200059,RITM300059,2026-10-31T23:11:19Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,19.89,False,False
+SCTASK200060,RITM300060,2026-10-09T05:11:16Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,30.19,False,True
+SCTASK200061,RITM300061,2026-10-20T22:25:23Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,35.21,False,True
+SCTASK200062,RITM300062,2026-08-30T11:09:32Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,18.48,False,False
+SCTASK200063,RITM300063,2026-11-08T09:37:08Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,48.37,True,True
+SCTASK200064,RITM300064,2026-09-12T15:30:58Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,80.85,True,True
+SCTASK200065,RITM300065,2026-10-12T12:48:00Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,54.4,True,True
+SCTASK200066,RITM300066,2026-09-03T20:39:36Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,44.13,True,True
+SCTASK200067,RITM300067,2026-10-15T01:36:55Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,11.81,False,False
+SCTASK200068,RITM300068,2026-10-03T11:20:06Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,57.41,True,True
+SCTASK200069,RITM300069,2026-11-07T16:17:46Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,55.56,True,True
+SCTASK200070,RITM300070,2026-10-15T18:06:41Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,11.16,False,False
+SCTASK200071,RITM300071,2026-11-07T11:02:37Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,37.63,True,True
+SCTASK200072,RITM300072,2026-09-29T00:36:17Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,35.45,False,True
+SCTASK200073,RITM300073,2026-08-28T16:05:11Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,47.8,True,True
+SCTASK200074,RITM300074,2026-11-06T10:34:20Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,12.59,False,False
+SCTASK200075,RITM300075,2026-11-02T18:39:15Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,40.07,True,True
+SCTASK200076,RITM300076,2026-09-30T17:07:10Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,47.9,True,True
+SCTASK200077,RITM300077,2026-10-11T20:53:15Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,81.58,True,True
+SCTASK200078,RITM300078,2026-10-30T23:17:29Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,13.85,False,False
+SCTASK200079,RITM300079,2026-08-31T16:22:04Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,33.9,False,True
+SCTASK200080,RITM300080,2026-10-16T13:26:01Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,48.43,True,True
+SCTASK200081,RITM300081,2026-09-24T15:12:04Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,41.84,True,True
+SCTASK200082,RITM300082,2026-10-18T17:54:06Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,47.58,True,True
+SCTASK200083,RITM300083,2026-10-31T14:44:12Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,17.96,False,False
+SCTASK200084,RITM300084,2026-09-17T01:42:58Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,34.88,False,True
+SCTASK200085,RITM300085,2026-09-03T19:45:46Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,32.63,False,True
+SCTASK200086,RITM300086,2026-09-02T13:36:36Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,53.6,True,True
+SCTASK200087,RITM300087,2026-10-12T13:45:44Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,39.05,True,True
+SCTASK200088,RITM300088,2026-09-24T01:39:27Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,45.13,True,True
+SCTASK200089,RITM300089,2026-10-01T09:58:27Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,57.78,True,True
+SCTASK200090,RITM300090,2026-10-19T15:50:16Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,49.33,True,True
+SCTASK200091,RITM300091,2026-10-14T12:46:37Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,43.71,True,True
+SCTASK200092,RITM300092,2026-10-19T08:33:43Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,84.71,True,True
+SCTASK200093,RITM300093,2026-09-22T22:18:53Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,37.29,True,True
+SCTASK200094,RITM300094,2026-10-15T23:41:44Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,11.36,False,False
+SCTASK200095,RITM300095,2026-10-08T01:01:19Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,14.94,False,False
+SCTASK200096,RITM300096,2026-10-23T04:04:56Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,41.29,True,True
+SCTASK200097,RITM300097,2026-09-25T16:15:51Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,56.27,True,True
+SCTASK200098,RITM300098,2026-10-30T07:47:02Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,25.88,False,True
+SCTASK200099,RITM300099,2026-10-13T19:20:43Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,34.63,False,True
+SCTASK200100,RITM300100,2026-10-22T17:46:50Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,52.25,True,True
+SCTASK200101,RITM300101,2026-10-14T22:20:13Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,50.73,True,True
+SCTASK200102,RITM300102,2026-08-26T07:26:30Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,68.9,True,True
+SCTASK200103,RITM300103,2026-09-01T21:34:07Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,79.98,True,True
+SCTASK200104,RITM300104,2026-09-14T22:40:40Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,28.39,False,True
+SCTASK200105,RITM300105,2026-08-30T01:46:33Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,43.07,True,True
+SCTASK200106,RITM300106,2026-08-30T05:00:41Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,76.07,True,True
+SCTASK200107,RITM300107,2026-09-09T05:01:39Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,48.29,True,True
+SCTASK200108,RITM300108,2026-09-13T16:45:51Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,40.71,True,True
+SCTASK200109,RITM300109,2026-10-08T00:15:44Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,26.03,False,True
+SCTASK200110,RITM300110,2026-11-03T02:47:48Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,60.65,True,True
+SCTASK200111,RITM300111,2026-08-25T03:05:20Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,73.39,True,True
+SCTASK200112,RITM300112,2026-08-27T21:15:40Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,16.12,False,False
+SCTASK200113,RITM300113,2026-08-18T07:55:28Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,15.32,False,False
+SCTASK200114,RITM300114,2026-10-14T12:07:21Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,38.94,True,True
+SCTASK200115,RITM300115,2026-10-12T00:48:05Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,58.77,True,True
+SCTASK200116,RITM300116,2026-11-05T10:55:24Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,60.84,True,True
+SCTASK200117,RITM300117,2026-09-17T07:55:20Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,17.53,False,False
+SCTASK200118,RITM300118,2026-08-26T16:29:12Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,9.05,False,False
+SCTASK200119,RITM300119,2026-10-01T09:27:23Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,36.96,True,True
+SCTASK200120,RITM300120,2026-09-23T22:34:18Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,46.52,True,True
+SCTASK200121,RITM300121,2026-09-07T21:28:28Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,78.03,True,True
+SCTASK200122,RITM300122,2026-09-22T04:12:22Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,45.28,True,True
+SCTASK200123,RITM300123,2026-09-02T03:10:52Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,37.24,True,True
+SCTASK200124,RITM300124,2026-08-18T12:35:23Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,37.61,True,True
+SCTASK200125,RITM300125,2026-11-15T00:54:19Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,47.95,True,True
+SCTASK200126,RITM300126,2026-10-30T01:21:22Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,48.91,True,True
+SCTASK200127,RITM300127,2026-09-30T16:50:23Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,67.08,True,True
+SCTASK200128,RITM300128,2026-08-28T06:18:06Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,11.04,False,False
+SCTASK200129,RITM300129,2026-09-28T16:44:26Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,20.91,False,False
+SCTASK200130,RITM300130,2026-11-09T18:32:12Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,42.05,True,True
+SCTASK200131,RITM300131,2026-08-26T09:02:17Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,68.7,True,True
+SCTASK200132,RITM300132,2026-10-24T20:08:42Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,26.04,False,True
+SCTASK200133,RITM300133,2026-10-11T12:00:02Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,12.1,False,False
+SCTASK200134,RITM300134,2026-10-09T13:43:13Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,55.96,True,True
+SCTASK200135,RITM300135,2026-10-13T03:02:12Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,16.72,False,False
+SCTASK200136,RITM300136,2026-10-13T02:53:46Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,45.97,True,True
+SCTASK200137,RITM300137,2026-09-22T04:22:34Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,39.98,True,True
+SCTASK200138,RITM300138,2026-09-02T23:01:52Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,12.22,False,False
+SCTASK200139,RITM300139,2026-09-05T12:19:38Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,48.81,True,True
+SCTASK200140,RITM300140,2026-10-24T05:52:57Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,59.62,True,True
+SCTASK200141,RITM300141,2026-08-21T14:25:36Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,58.15,True,True
+SCTASK200142,RITM300142,2026-11-04T08:32:34Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,26.64,False,True
+SCTASK200143,RITM300143,2026-08-26T22:02:56Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,15.08,False,False
+SCTASK200144,RITM300144,2026-09-08T12:01:20Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,50.47,True,True
+SCTASK200145,RITM300145,2026-10-20T21:56:46Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,57.11,True,True
+SCTASK200146,RITM300146,2026-09-30T04:32:06Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,9.54,False,False
+SCTASK200147,RITM300147,2026-11-13T07:57:59Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,11.01,False,False
+SCTASK200148,RITM300148,2026-09-20T13:31:41Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,63.68,True,True
+SCTASK200149,RITM300149,2026-08-31T23:42:08Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,52.41,True,True
+SCTASK200150,RITM300150,2026-09-17T04:48:40Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,73.48,True,True
+SCTASK200151,RITM300151,2026-11-14T18:56:42Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,42.91,True,True
+SCTASK200152,RITM300152,2026-09-14T09:32:25Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,35.28,False,True
+SCTASK200153,RITM300153,2026-09-22T18:11:00Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,21.68,False,True
+SCTASK200154,RITM300154,2026-09-10T19:20:55Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,11.18,False,False
+SCTASK200155,RITM300155,2026-08-26T16:42:56Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,36.52,True,True
+SCTASK200156,RITM300156,2026-10-21T11:10:54Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,47.28,True,True
+SCTASK200157,RITM300157,2026-09-13T15:59:51Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,57.65,True,True
+SCTASK200158,RITM300158,2026-11-07T00:57:16Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,64.41,True,True
+SCTASK200159,RITM300159,2026-08-30T15:08:19Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,18.75,False,False
+SCTASK200160,RITM300160,2026-09-09T02:52:10Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,19.97,False,True
+SCTASK200161,RITM300161,2026-11-04T07:28:09Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,56.98,True,True
+SCTASK200162,RITM300162,2026-09-19T06:03:14Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,45.05,True,True
+SCTASK200163,RITM300163,2026-10-11T01:42:55Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,44.94,True,True
+SCTASK200164,RITM300164,2026-10-26T03:58:41Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,58.22,True,True
+SCTASK200165,RITM300165,2026-11-05T13:01:00Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,70.41,True,True
+SCTASK200166,RITM300166,2026-09-24T01:00:16Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,70.31,True,True
+SCTASK200167,RITM300167,2026-11-10T08:51:01Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,46.16,True,True
+SCTASK200168,RITM300168,2026-09-11T03:01:23Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,64.84,True,True
+SCTASK200169,RITM300169,2026-09-02T04:01:41Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,22.24,False,False
+SCTASK200170,RITM300170,2026-11-13T23:31:35Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,46.76,True,True
+SCTASK200171,RITM300171,2026-10-24T06:58:26Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,39.98,True,True
+SCTASK200172,RITM300172,2026-10-08T11:36:26Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,37.6,True,True
+SCTASK200173,RITM300173,2026-09-25T14:08:52Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,44.15,True,True
+SCTASK200174,RITM300174,2026-10-07T18:41:35Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,20.35,False,False
+SCTASK200175,RITM300175,2026-08-28T23:00:34Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,32.34,False,True
+SCTASK200176,RITM300176,2026-10-31T00:47:39Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,43.04,True,True
+SCTASK200177,RITM300177,2026-09-23T15:17:25Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,13.1,False,False
+SCTASK200178,RITM300178,2026-10-25T01:37:46Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,48.07,True,True
+SCTASK200179,RITM300179,2026-08-19T18:08:35Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,17.96,False,False
+SCTASK200180,RITM300180,2026-09-19T14:16:36Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,46.92,True,True
+SCTASK200181,RITM300181,2026-09-15T12:28:04Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,56.15,True,True
+SCTASK200182,RITM300182,2026-09-16T08:39:35Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,65.35,True,True
+SCTASK200183,RITM300183,2026-11-08T04:28:30Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,23.48,False,True
+SCTASK200184,RITM300184,2026-09-02T22:15:31Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,27.01,False,True
+SCTASK200185,RITM300185,2026-11-07T09:55:15Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,16.57,False,False
+SCTASK200186,RITM300186,2026-11-14T22:18:12Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,30.76,False,True
+SCTASK200187,RITM300187,2026-10-24T20:20:41Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,30.33,False,True
+SCTASK200188,RITM300188,2026-10-09T20:46:54Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,52.35,True,True
+SCTASK200189,RITM300189,2026-09-26T06:26:33Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,49.43,True,True
+SCTASK200190,RITM300190,2026-11-15T04:27:05Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,47.32,True,True
+SCTASK200191,RITM300191,2026-10-25T07:57:08Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,33.35,False,True
+SCTASK200192,RITM300192,2026-10-15T15:19:41Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,59.38,True,True
+SCTASK200193,RITM300193,2026-09-01T01:25:49Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,14.69,False,False
+SCTASK200194,RITM300194,2026-10-05T22:28:50Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,13.94,False,False
+SCTASK200195,RITM300195,2026-09-03T08:36:00Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,19.87,False,False
+SCTASK200196,RITM300196,2026-08-20T14:07:30Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,38.66,True,True
+SCTASK200197,RITM300197,2026-09-17T01:25:57Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,58.74,True,True
+SCTASK200198,RITM300198,2026-09-01T11:42:08Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,30.2,False,True
+SCTASK200199,RITM300199,2026-09-25T06:52:31Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,42.85,True,True
+SCTASK200200,RITM300200,2026-08-25T08:10:38Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,17.74,False,False
+SCTASK200201,RITM300201,2026-08-25T11:36:52Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,8.84,False,False
+SCTASK200202,RITM300202,2026-11-10T09:46:03Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,42.73,True,True
+SCTASK200203,RITM300203,2026-10-02T20:45:47Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,14.65,False,False
+SCTASK200204,RITM300204,2026-10-28T13:37:05Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,39.11,True,True
+SCTASK200205,RITM300205,2026-09-30T01:05:12Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,60.06,True,True
+SCTASK200206,RITM300206,2026-11-02T19:01:08Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,32.32,False,True
+SCTASK200207,RITM300207,2026-10-20T13:57:37Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,29.9,False,True
+SCTASK200208,RITM300208,2026-09-21T13:21:50Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,17.89,False,False
+SCTASK200209,RITM300209,2026-11-01T01:56:41Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,48.16,True,True
+SCTASK200210,RITM300210,2026-08-30T07:21:01Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,21.77,False,False
+SCTASK200211,RITM300211,2026-10-12T10:36:23Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,44.63,True,True
+SCTASK200212,RITM300212,2026-10-26T08:38:32Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,11.55,False,False
+SCTASK200213,RITM300213,2026-08-21T14:05:31Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,39.49,True,True
+SCTASK200214,RITM300214,2026-11-03T02:53:56Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,66.07,True,True
+SCTASK200215,RITM300215,2026-11-05T21:38:28Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,38.15,True,True
+SCTASK200216,RITM300216,2026-08-28T06:30:10Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,21.69,False,False
+SCTASK200217,RITM300217,2026-08-26T21:55:01Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,47.76,True,True
+SCTASK200218,RITM300218,2026-11-15T09:19:32Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,52.21,True,True
+SCTASK200219,RITM300219,2026-10-17T14:17:37Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,18.21,False,False
+SCTASK200220,RITM300220,2026-09-06T13:24:47Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,37.85,True,True
+SCTASK200221,RITM300221,2026-09-12T18:36:29Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,48.82,True,True
+SCTASK200222,RITM300222,2026-09-28T02:35:33Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,13.41,False,False
+SCTASK200223,RITM300223,2026-09-21T13:12:47Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,31.37,False,True
+SCTASK200224,RITM300224,2026-08-31T12:09:06Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,30.73,False,True
+SCTASK200225,RITM300225,2026-10-10T08:32:39Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,30.33,False,True
+SCTASK200226,RITM300226,2026-11-08T01:07:16Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,84.37,True,True
+SCTASK200227,RITM300227,2026-10-08T17:28:47Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,65.89,True,True
+SCTASK200228,RITM300228,2026-10-22T16:53:01Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,16.11,False,False
+SCTASK200229,RITM300229,2026-08-27T21:26:55Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,28.14,False,True
+SCTASK200230,RITM300230,2026-08-30T06:08:57Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,45.98,True,True
+SCTASK200231,RITM300231,2026-09-25T13:11:33Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,41.36,True,True
+SCTASK200232,RITM300232,2026-10-22T05:00:01Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,37.32,True,True
+SCTASK200233,RITM300233,2026-09-07T16:57:34Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,74.52,True,True
+SCTASK200234,RITM300234,2026-10-21T05:55:38Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,10.11,False,False
+SCTASK200235,RITM300235,2026-10-02T19:17:05Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,37.52,True,True
+SCTASK200236,RITM300236,2026-09-04T06:16:39Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,19.23,False,False
+SCTASK200237,RITM300237,2026-08-28T23:47:39Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,36.62,True,True
+SCTASK200238,RITM300238,2026-11-08T00:16:54Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,24.37,False,True
+SCTASK200239,RITM300239,2026-10-12T05:42:11Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,85.11,True,True
+SCTASK200240,RITM300240,2026-10-07T06:54:48Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,28.92,False,True
+SCTASK200241,RITM300241,2026-09-13T04:22:18Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,2,4,38.15,True,True
+SCTASK200242,RITM300242,2026-09-19T15:56:50Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,64.05,True,True
+SCTASK200243,RITM300243,2026-10-26T00:06:58Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,14.05,False,False
+SCTASK200244,RITM300244,2026-09-22T20:49:22Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,58.24,True,True
+SCTASK200245,RITM300245,2026-10-25T21:38:41Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,34.38,False,True
+SCTASK200246,RITM300246,2026-08-28T16:04:27Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,23.21,False,True
+SCTASK200247,RITM300247,2026-11-12T03:46:31Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,15.6,False,False
+SCTASK200248,RITM300248,2026-09-02T20:51:47Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,27.98,False,True
+SCTASK200249,RITM300249,2026-10-07T14:31:26Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,39.35,True,True
+SCTASK200250,RITM300250,2026-09-06T08:28:36Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,62.92,True,True
+SCTASK200251,RITM300251,2026-10-19T19:07:50Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,21.86,False,True
+SCTASK200252,RITM300252,2026-10-27T11:03:12Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,46.06,True,True
+SCTASK200253,RITM300253,2026-09-26T05:32:22Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,28.68,False,True
+SCTASK200254,RITM300254,2026-08-27T14:38:29Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,41.02,True,True
+SCTASK200255,RITM300255,2026-08-29T10:21:48Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,21.48,False,False
+SCTASK200256,RITM300256,2026-09-19T11:07:55Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,69.38,True,True
+SCTASK200257,RITM300257,2026-11-03T07:26:45Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,49.98,True,True
+SCTASK200258,RITM300258,2026-09-14T03:32:14Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,54.93,True,True
+SCTASK200259,RITM300259,2026-08-30T01:16:39Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,64.82,True,True
+SCTASK200260,RITM300260,2026-10-30T20:01:08Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,60.66,True,True
+SCTASK200261,RITM300261,2026-09-07T22:03:38Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,43.11,True,True
+SCTASK200262,RITM300262,2026-10-12T23:05:40Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,14.5,False,False
+SCTASK200263,RITM300263,2026-09-16T17:42:33Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,3,4,25.83,False,True
+SCTASK200264,RITM300264,2026-11-08T16:34:22Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,36.83,True,True
+SCTASK200265,RITM300265,2026-10-17T07:26:27Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,42.75,True,True
+SCTASK200266,RITM300266,2026-10-06T07:55:22Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,57.0,True,True
+SCTASK200267,RITM300267,2026-09-17T00:59:05Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,5,4,63.63,True,True
+SCTASK200268,RITM300268,2026-10-04T12:12:56Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,45.2,True,True
+SCTASK200269,RITM300269,2026-08-21T02:36:19Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,38.2,True,True
+SCTASK200270,RITM300270,2026-11-12T13:03:30Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,57.36,True,True
+SCTASK200271,RITM300271,2026-09-23T18:06:01Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,43.0,True,True
+SCTASK200272,RITM300272,2026-10-11T22:56:26Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,51.51,True,True
+SCTASK200273,RITM300273,2026-11-04T17:34:13Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,15.17,False,False
+SCTASK200274,RITM300274,2026-09-03T16:46:05Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,22.15,False,False
+SCTASK200275,RITM300275,2026-10-03T06:24:22Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,17.21,False,False
+SCTASK200276,RITM300276,2026-11-10T17:26:55Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,45.16,True,True
+SCTASK200277,RITM300277,2026-09-14T03:29:43Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,52.59,True,True
+SCTASK200278,RITM300278,2026-09-05T22:26:18Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,9.91,False,False
+SCTASK200279,RITM300279,2026-09-18T20:24:49Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,40.2,True,True
+SCTASK200280,RITM300280,2026-10-24T09:32:51Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,36.71,True,True
+SCTASK200281,RITM300281,2026-09-16T01:41:52Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,11.63,False,False
+SCTASK200282,RITM300282,2026-08-28T16:34:04Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,44.89,True,True
+SCTASK200283,RITM300283,2026-11-11T18:09:18Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,19.56,False,True
+SCTASK200284,RITM300284,2026-11-01T20:20:50Z,IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,site-mfg-01,enclave-cui-prod,2,4,33.33,False,True
+SCTASK200285,RITM300285,2026-10-11T23:45:30Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,14.55,False,False
+SCTASK200286,RITM300286,2026-10-06T11:58:54Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,5,4,40.38,True,True
+SCTASK200287,RITM300287,2026-11-12T11:11:30Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,76.77,True,True
+SCTASK200288,RITM300288,2026-09-01T17:49:22Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,27.62,False,True
+SCTASK200289,RITM300289,2026-11-12T01:40:48Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,4,4,41.18,True,True
+SCTASK200290,RITM300290,2026-08-17T14:17:14Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,19.42,False,False
+SCTASK200291,RITM300291,2026-11-09T06:33:53Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,34.95,False,True
+SCTASK200292,RITM300292,2026-08-30T10:22:29Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,3,4,61.42,True,True
+SCTASK200293,RITM300293,2026-09-02T15:00:20Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,35.14,False,True
+SCTASK200294,RITM300294,2026-09-01T19:26:26Z,Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,site-mfg-01,enclave-cui-prod,4,4,40.18,True,True
+SCTASK200295,RITM300295,2026-11-04T08:35:23Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,1,1,9.57,False,False
+SCTASK200296,RITM300296,2026-09-02T08:45:46Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,3,4,33.5,False,True
+SCTASK200297,RITM300297,2026-10-04T09:59:11Z,ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,site-mfg-01,enclave-cui-prod,0,1,10.37,False,False
+SCTASK200298,RITM300298,2026-09-17T12:02:03Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,5,4,50.29,True,True
+SCTASK200299,RITM300299,2026-10-03T16:13:40Z,Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,site-mfg-01,enclave-cui-prod,4,4,35.82,False,True
+SCTASK200300,RITM300300,2026-09-15T06:52:07Z,GCC-High-M365-License-And-Enclave-Group,Identity & Access,site-mfg-01,enclave-cui-prod,2,4,34.18,False,True

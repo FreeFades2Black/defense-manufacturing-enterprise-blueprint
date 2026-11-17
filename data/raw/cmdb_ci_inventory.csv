@@ -1,0 +1,121 @@
+ci_sys_id,ci_name,ip_address,enclave_zone,business_service,operating_system,operational_status,upstream_app_mapped,mid_server_agent,mid_discovery_status,os_patch_compliant,is_orphan_ci
+CI-00001,srv-site-001.example-mfg.local,198.51.100.11,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00002,srv-org-002.example-mfg.local,203.0.113.12,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00003,srv-enclave-003.example-mfg.local,192.0.2.13,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00004,srv-site-004.example-mfg.local,198.51.100.14,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00005,srv-org-005.example-mfg.local,203.0.113.15,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00006,srv-enclave-006.example-mfg.local,192.0.2.16,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00007,srv-site-007.example-mfg.local,198.51.100.17,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00008,srv-org-008.example-mfg.local,203.0.113.18,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00009,srv-enclave-009.example-mfg.local,192.0.2.19,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00010,srv-site-010.example-mfg.local,198.51.100.20,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00011,srv-org-011.example-mfg.local,203.0.113.21,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00012,srv-enclave-012.example-mfg.local,192.0.2.22,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00013,srv-site-013.example-mfg.local,198.51.100.23,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00014,srv-org-014.example-mfg.local,203.0.113.24,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00015,srv-enclave-015.example-mfg.local,192.0.2.25,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00016,srv-site-016.example-mfg.local,198.51.100.26,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00017,srv-org-017.example-mfg.local,203.0.113.27,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00018,srv-enclave-018.example-mfg.local,192.0.2.28,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00019,srv-site-019.example-mfg.local,198.51.100.29,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00020,srv-org-020.example-mfg.local,203.0.113.30,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00021,srv-enclave-021.example-mfg.local,192.0.2.31,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00022,srv-site-022.example-mfg.local,198.51.100.32,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00023,srv-org-023.example-mfg.local,203.0.113.33,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00024,srv-enclave-024.example-mfg.local,192.0.2.34,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00025,srv-site-025.example-mfg.local,198.51.100.35,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00026,srv-org-026.example-mfg.local,203.0.113.36,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00027,srv-enclave-027.example-mfg.local,192.0.2.37,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00028,srv-site-028.example-mfg.local,198.51.100.38,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00029,srv-org-029.example-mfg.local,203.0.113.39,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00030,srv-enclave-030.example-mfg.local,192.0.2.40,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00031,srv-site-031.example-mfg.local,198.51.100.41,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00032,srv-org-032.example-mfg.local,203.0.113.42,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00033,srv-enclave-033.example-mfg.local,192.0.2.43,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00034,srv-site-034.example-mfg.local,198.51.100.44,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00035,srv-org-035.example-mfg.local,203.0.113.45,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00036,srv-enclave-036.example-mfg.local,192.0.2.46,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00037,srv-site-037.example-mfg.local,198.51.100.47,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,False,True
+CI-00038,srv-org-038.example-mfg.local,203.0.113.48,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00039,srv-enclave-039.example-mfg.local,192.0.2.49,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00040,srv-site-040.example-mfg.local,198.51.100.50,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00041,srv-org-041.example-mfg.local,203.0.113.51,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00042,srv-enclave-042.example-mfg.local,192.0.2.52,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00043,srv-site-043.example-mfg.local,198.51.100.53,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00044,srv-org-044.example-mfg.local,203.0.113.54,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00045,srv-enclave-045.example-mfg.local,192.0.2.55,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00046,srv-site-046.example-mfg.local,198.51.100.56,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00047,srv-org-047.example-mfg.local,203.0.113.57,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00048,srv-enclave-048.example-mfg.local,192.0.2.58,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00049,srv-site-049.example-mfg.local,198.51.100.59,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00050,srv-org-050.example-mfg.local,203.0.113.60,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00051,srv-enclave-051.example-mfg.local,192.0.2.61,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00052,srv-site-052.example-mfg.local,198.51.100.62,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00053,srv-org-053.example-mfg.local,203.0.113.63,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00054,srv-enclave-054.example-mfg.local,192.0.2.64,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00055,srv-site-055.example-mfg.local,198.51.100.65,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00056,srv-org-056.example-mfg.local,203.0.113.66,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00057,srv-enclave-057.example-mfg.local,192.0.2.67,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00058,srv-site-058.example-mfg.local,198.51.100.68,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00059,srv-org-059.example-mfg.local,203.0.113.69,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00060,srv-enclave-060.example-mfg.local,192.0.2.70,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00061,srv-site-061.example-mfg.local,198.51.100.71,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00062,srv-org-062.example-mfg.local,203.0.113.72,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00063,srv-enclave-063.example-mfg.local,192.0.2.73,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00064,srv-site-064.example-mfg.local,198.51.100.74,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00065,srv-org-065.example-mfg.local,203.0.113.75,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00066,srv-enclave-066.example-mfg.local,192.0.2.76,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00067,srv-site-067.example-mfg.local,198.51.100.77,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00068,srv-org-068.example-mfg.local,203.0.113.78,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00069,srv-enclave-069.example-mfg.local,192.0.2.79,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00070,srv-site-070.example-mfg.local,198.51.100.80,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00071,srv-org-071.example-mfg.local,203.0.113.81,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00072,srv-enclave-072.example-mfg.local,192.0.2.82,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00073,srv-site-073.example-mfg.local,198.51.100.83,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00074,srv-org-074.example-mfg.local,203.0.113.84,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00075,srv-enclave-075.example-mfg.local,192.0.2.85,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00076,srv-site-076.example-mfg.local,198.51.100.86,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00077,srv-org-077.example-mfg.local,203.0.113.87,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00078,srv-enclave-078.example-mfg.local,192.0.2.88,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00079,srv-site-079.example-mfg.local,198.51.100.89,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00080,srv-org-080.example-mfg.local,203.0.113.90,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00081,srv-enclave-081.example-mfg.local,192.0.2.91,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00082,srv-site-082.example-mfg.local,198.51.100.92,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00083,srv-org-083.example-mfg.local,203.0.113.93,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00084,srv-enclave-084.example-mfg.local,192.0.2.94,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00085,srv-site-085.example-mfg.local,198.51.100.95,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00086,srv-org-086.example-mfg.local,203.0.113.96,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00087,srv-enclave-087.example-mfg.local,192.0.2.97,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00088,srv-site-088.example-mfg.local,198.51.100.98,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00089,srv-org-089.example-mfg.local,203.0.113.99,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00090,srv-enclave-090.example-mfg.local,192.0.2.100,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00091,srv-site-091.example-mfg.local,198.51.100.101,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00092,srv-org-092.example-mfg.local,203.0.113.102,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00093,srv-enclave-093.example-mfg.local,192.0.2.103,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00094,srv-site-094.example-mfg.local,198.51.100.104,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00095,srv-org-095.example-mfg.local,203.0.113.105,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00096,srv-enclave-096.example-mfg.local,192.0.2.106,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00097,srv-site-097.example-mfg.local,198.51.100.107,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00098,srv-org-098.example-mfg.local,203.0.113.108,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00099,srv-enclave-099.example-mfg.local,192.0.2.109,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,Success,True,True
+CI-00100,srv-site-100.example-mfg.local,198.51.100.110,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,False,False
+CI-00101,srv-org-101.example-mfg.local,203.0.113.111,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00102,srv-enclave-102.example-mfg.local,192.0.2.112,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00103,srv-site-103.example-mfg.local,198.51.100.113,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00104,srv-org-104.example-mfg.local,203.0.113.114,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00105,srv-enclave-105.example-mfg.local,192.0.2.115,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00106,srv-site-106.example-mfg.local,198.51.100.116,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00107,srv-org-107.example-mfg.local,203.0.113.117,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00108,srv-enclave-108.example-mfg.local,192.0.2.118,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00109,srv-site-109.example-mfg.local,198.51.100.119,site-mfg-01,Shop-Floor MES / MID Server DMZ,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00110,srv-org-110.example-mfg.local,203.0.113.120,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00111,srv-enclave-111.example-mfg.local,192.0.2.121,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00112,srv-site-112.example-mfg.local,198.51.100.122,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00113,srv-org-113.example-mfg.local,203.0.113.123,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00114,srv-enclave-114.example-mfg.local,192.0.2.124,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00115,srv-site-115.example-mfg.local,198.51.100.125,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00116,srv-org-116.example-mfg.local,203.0.113.126,org-enterprise-it,Enterprise Transit / Shared Identity,Windows Server 2022 Datacenter,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00117,srv-enclave-117.example-mfg.local,192.0.2.127,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2022 Datacenter,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00118,srv-site-118.example-mfg.local,198.51.100.128,site-mfg-01,Shop-Floor MES / MID Server DMZ,RHEL 8.9 Enterprise,Operational,True,mid-mfg-01.example-mfg.local,Success,True,False
+CI-00119,srv-org-119.example-mfg.local,203.0.113.129,org-enterprise-it,Enterprise Transit / Shared Identity,RHEL 8.9 Enterprise,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True
+CI-00120,srv-enclave-120.example-mfg.local,192.0.2.130,enclave-cui-prod,IFS Cloud ERP / Aras PLM Core,Windows Server 2019 Standard,Operational,False,mid-mfg-01.example-mfg.local,WinRM-5986-Credential-Timeout,True,True

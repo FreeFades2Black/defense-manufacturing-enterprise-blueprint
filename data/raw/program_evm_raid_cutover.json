@@ -1,0 +1,129 @@
+{
+  "program_name": "Defense Manufacturing Enterprise Modernization (ERP / PLM / CMMC L2)",
+  "organization": "org-enterprise-it",
+  "site_id": "site-mfg-01",
+  "enclave_id": "enclave-cui-prod",
+  "reporting_period": "2026-Q4",
+  "workstreams": [
+    {
+      "workstream_id": "WS-01",
+      "name": "IFS Cloud ERP Core & Shop-Floor Integration",
+      "planned_value_usd": 1450000,
+      "earned_value_usd": 1392000,
+      "actual_cost_usd": 1365000,
+      "cpi": 1.02,
+      "spi": 0.96,
+      "status": "AMBER",
+      "owner_role": "TPM / Senior Systems Engineer"
+    },
+    {
+      "workstream_id": "WS-02",
+      "name": "Aras Innovator PLM & CUI Technical Data Package Vault",
+      "planned_value_usd": 880000,
+      "earned_value_usd": 897600,
+      "actual_cost_usd": 855000,
+      "cpi": 1.05,
+      "spi": 1.02,
+      "status": "GREEN",
+      "owner_role": "TPM / Senior Systems Engineer"
+    },
+    {
+      "workstream_id": "WS-03",
+      "name": "CMMC Level 2 Enclave IaC & NIST 800-171 Hardening",
+      "planned_value_usd": 620000,
+      "earned_value_usd": 613800,
+      "actual_cost_usd": 590000,
+      "cpi": 1.04,
+      "spi": 0.99,
+      "status": "GREEN",
+      "owner_role": "TPM / Senior Systems Engineer"
+    },
+    {
+      "workstream_id": "WS-04",
+      "name": "Identity (GCC High) & ServiceNow Orchestration Automation",
+      "planned_value_usd": 410000,
+      "earned_value_usd": 385400,
+      "actual_cost_usd": 395000,
+      "cpi": 0.98,
+      "spi": 0.94,
+      "status": "AMBER",
+      "owner_role": "TPM / Senior Systems Engineer"
+    }
+  ],
+  "raid_register": [
+    {
+      "id": "RISK-001",
+      "type": "Risk",
+      "severity": "HIGH",
+      "title": "ServiceNow MID Server WinRM credential timeouts on 198.51.100.0/24 masking 22% of shop-floor CIs",
+      "mitigation": "Deploy gMSA service principal via DSC and restrict port 5986 NSG rule to 198.51.100.25/32",
+      "nist_control": "3.4.1 / 3.11.2",
+      "target_closure_days": 14
+    },
+    {
+      "id": "ISSUE-002",
+      "type": "Issue",
+      "severity": "HIGH",
+      "title": "3+ hop ticket ping-ponging between Corp-IT-Tier1, Enclave-SecOps, and Site-MFG-01-IT on GCC High MFA & ERP role requests",
+      "mitigation": "Convert top 3 catalog items to pre-approved Standard Changes backed by PowerShell/Graph API orchestration",
+      "nist_control": "3.1.1 / 3.1.5",
+      "target_closure_days": 21
+    },
+    {
+      "id": "DEP-003",
+      "type": "Dependency",
+      "severity": "MEDIUM",
+      "title": "Corporate Firewall Change Freeze window prior to IFS Cloud ERP production cutover",
+      "mitigation": "Submit pre-validated Terraform NSG plan and automated OPA Security Dossier 15 days ahead of CAB",
+      "nist_control": "3.13.1 / 3.4.3",
+      "target_closure_days": 15
+    },
+    {
+      "id": "RISK-004",
+      "type": "Risk",
+      "severity": "MEDIUM",
+      "title": "CLUS-VMW-MFG01-OT memory utilization at 88.5% ahead of MES collector deployment",
+      "mitigation": "Rebalance non-CUI test workloads and decommission stale Windows Server 2016 CIs identified in Week-1 AD scan",
+      "nist_control": "3.4.1 / 3.7.1",
+      "target_closure_days": 30
+    }
+  ],
+  "cutover_readiness_checklist": [
+    {
+      "gate_id": "GATE-01",
+      "category": "CMMC Level 2 / Security",
+      "criterion": "100% of enclave endpoints enforce FIPS 140-2/3 & TLS 1.2/1.3 with >30 days cert validity",
+      "nist_control": "3.13.8 / 3.13.11",
+      "ready": true
+    },
+    {
+      "gate_id": "GATE-02",
+      "category": "Infrastructure & Capacity",
+      "category_detail": "enclave-cui-prod (192.0.2.0/24)",
+      "criterion": "Hypervisor cluster compute/memory headroom >20% and immutable GeoRedundant backup verified",
+      "nist_control": "3.8.9 / 3.4.1",
+      "ready": true
+    },
+    {
+      "gate_id": "GATE-03",
+      "category": "CMDB & Service Transition",
+      "criterion": "MID Server discovery error rate <2% and all IFS Cloud / Aras PLM CIs mapped to upstream services",
+      "nist_control": "3.4.1 / 3.12.3",
+      "ready": false
+    },
+    {
+      "gate_id": "GATE-04",
+      "category": "Identity & ITSM Runbooks",
+      "criterion": "GCC High Conditional Access policy active and Site-MFG-01-IT Tier-2 runbooks signed off",
+      "nist_control": "3.1.1 / 3.5.3",
+      "ready": true
+    },
+    {
+      "gate_id": "GATE-05",
+      "category": "FinOps & Program Controls",
+      "criterion": "Infracost monthly cloud spend delta within approved $18,500 threshold and CPI >= 1.00",
+      "nist_control": "PMI-EVM / FinOps",
+      "ready": true
+    }
+  ]
+}

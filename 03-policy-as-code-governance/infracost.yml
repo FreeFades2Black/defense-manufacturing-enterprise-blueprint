@@ -1,0 +1,20 @@
+# ==============================================================================
+# METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
+# Artifact:        03-policy-as-code-governance/infracost.yml
+# Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
+# NIST SP 800-171: 3.4.3 (System Change Control & Impact Analysis)
+# ITIL 4 / PMI:    ITIL 4 Service Financial Mgmt | PMI Cost Baseline Control
+# ==============================================================================
+version: 0.1
+projects:
+  - path: ../01-cmmc-enclave-iac
+    name: enclave-cui-prod-site-mfg-01
+    terraform_vars:
+      enterprise_org_id: org-enterprise-it
+      enclave_id: enclave-cui-prod
+      manufacturing_site_id: site-mfg-01
+      domain_fqdn: example-mfg.local
+      enclave_cui_subnet_cidr: 192.0.2.0/24
+      site_mfg_dmz_subnet_cidr: 198.51.100.0/24
+      corp_transit_subnet_cidr: 203.0.113.0/24
+      monthly_budget_limit_usd: 18500

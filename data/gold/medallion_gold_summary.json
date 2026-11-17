@@ -1,0 +1,158 @@
+{
+  "generated_at_utc": "2026-11-17T21:32:09Z",
+  "scope": {
+    "organization": "org-enterprise-it",
+    "site_id": "site-mfg-01",
+    "enclave_id": "enclave-cui-prod",
+    "domain": "example-mfg.local"
+  },
+  "incident_kpis": {
+    "total_incidents_90d": 450,
+    "ping_pong_ticket_count": 306,
+    "ping_pong_rate_pct": 68.0,
+    "sla_breach_count": 350,
+    "sla_breach_rate_pct": 77.8,
+    "overall_avg_mttr_hours": 55.23
+  },
+  "catalog_task_kpis": {
+    "total_sc_tasks_90d": 300,
+    "automation_candidate_pct": 78.0,
+    "avg_fulfillment_hours": 39.68
+  },
+  "change_kpis": {
+    "total_changes_90d": 120,
+    "standard_change_pct": 32.5,
+    "normal_change_avg_cab_wait_hours": 86.8,
+    "change_success_rate_pct": 95.8
+  },
+  "cmdb_and_mid_kpis": {
+    "total_server_cis": 120,
+    "orphan_ci_count": 28,
+    "orphan_ci_rate_pct": 23.3,
+    "mid_discovery_failure_count": 21,
+    "mid_discovery_failure_rate_pct": 17.5,
+    "os_patch_compliance_pct": 86.7
+  },
+  "top_pareto_bottlenecks": [
+    {
+      "category": "Identity & Access (GCC High / Entra / AD)",
+      "subcategory": "GCC-High-MFA-Provisioning",
+      "assignment_group_path": "Corp-IT-Tier1 -> Org-Identity-Ops -> Enclave-SecOps -> Site-MFG-01-IT",
+      "ticket_count": 103,
+      "avg_hops": 4.24,
+      "avg_mttr_hours": 91.26,
+      "total_mttr_hours": 9399.66,
+      "sla_breach_count": 103,
+      "ping_pong_count": 103,
+      "sla_breach_rate_pct": 100.0,
+      "share_of_total_mttr_pct": 37.8,
+      "cumulative_mttr_pct": 37.8,
+      "is_top_pareto_driver": true
+    },
+    {
+      "category": "ERP / PLM Enterprise Platforms",
+      "subcategory": "IFS-ERP-Role-Entitlement",
+      "assignment_group_path": "Corp-IT-Tier1 -> Site-MFG-01-IT -> Enclave-SecOps -> ERP-Platform-Team",
+      "ticket_count": 96,
+      "avg_hops": 3.91,
+      "avg_mttr_hours": 76.03,
+      "total_mttr_hours": 7298.96,
+      "sla_breach_count": 96,
+      "ping_pong_count": 96,
+      "sla_breach_rate_pct": 100.0,
+      "share_of_total_mttr_pct": 29.4,
+      "cumulative_mttr_pct": 67.2,
+      "is_top_pareto_driver": true
+    },
+    {
+      "category": "ERP / PLM Enterprise Platforms",
+      "subcategory": "Aras-PLM-CAD-Vault-Sync",
+      "assignment_group_path": "Site-MFG-01-IT -> Corp-Storage-Team -> PLM-Engineering-Support",
+      "ticket_count": 65,
+      "avg_hops": 2.95,
+      "avg_mttr_hours": 44.1,
+      "total_mttr_hours": 2866.35,
+      "sla_breach_count": 65,
+      "ping_pong_count": 43,
+      "sla_breach_rate_pct": 100.0,
+      "share_of_total_mttr_pct": 11.5,
+      "cumulative_mttr_pct": 78.7,
+      "is_top_pareto_driver": true
+    },
+    {
+      "category": "CMDB & Discovery Infrastructure",
+      "subcategory": "MID-Server-Credential-Timeout",
+      "assignment_group_path": "Corp-IT-Tier1 -> Corp-SNOW-Admins -> Enclave-SecOps -> Site-MFG-01-IT",
+      "ticket_count": 46,
+      "avg_hops": 3.22,
+      "avg_mttr_hours": 59.65,
+      "total_mttr_hours": 2743.89,
+      "sla_breach_count": 45,
+      "ping_pong_count": 30,
+      "sla_breach_rate_pct": 97.8,
+      "share_of_total_mttr_pct": 11.0,
+      "cumulative_mttr_pct": 89.8,
+      "is_top_pareto_driver": false
+    },
+    {
+      "category": "Network & Enclave Boundary",
+      "subcategory": "OT-VLAN-Firewall-Exception",
+      "assignment_group_path": "Site-MFG-01-IT -> Corp-Network-Eng -> Enclave-SecOps",
+      "ticket_count": 41,
+      "avg_hops": 3.2,
+      "avg_mttr_hours": 42.16,
+      "total_mttr_hours": 1728.55,
+      "sla_breach_count": 41,
+      "ping_pong_count": 34,
+      "sla_breach_rate_pct": 100.0,
+      "share_of_total_mttr_pct": 7.0,
+      "cumulative_mttr_pct": 96.7,
+      "is_top_pareto_driver": false
+    },
+    {
+      "category": "Identity & Access (GCC High / Entra / AD)",
+      "subcategory": "PKI-SmartCard-Cert-Renewal",
+      "assignment_group_path": "Site-MFG-01-IT -> Enclave-SecOps",
+      "ticket_count": 35,
+      "avg_hops": 1.37,
+      "avg_mttr_hours": 13.18,
+      "total_mttr_hours": 461.35,
+      "sla_breach_count": 0,
+      "ping_pong_count": 0,
+      "sla_breach_rate_pct": 0.0,
+      "share_of_total_mttr_pct": 1.9,
+      "cumulative_mttr_pct": 98.6,
+      "is_top_pareto_driver": false
+    },
+    {
+      "category": "End-User Compute",
+      "subcategory": "Workstation-Patch-Reboot-Loop",
+      "assignment_group_path": "Site-MFG-01-IT",
+      "ticket_count": 30,
+      "avg_hops": 0.5,
+      "avg_mttr_hours": 6.5,
+      "total_mttr_hours": 195.15,
+      "sla_breach_count": 0,
+      "ping_pong_count": 0,
+      "sla_breach_rate_pct": 0.0,
+      "share_of_total_mttr_pct": 0.8,
+      "cumulative_mttr_pct": 99.4,
+      "is_top_pareto_driver": false
+    },
+    {
+      "category": "Shop Floor OT / Peripherals",
+      "subcategory": "Barcode-Thermal-Printer-Spooler",
+      "assignment_group_path": "Site-MFG-01-IT",
+      "ticket_count": 34,
+      "avg_hops": 0.41,
+      "avg_mttr_hours": 4.67,
+      "total_mttr_hours": 158.67,
+      "sla_breach_count": 0,
+      "ping_pong_count": 0,
+      "sla_breach_rate_pct": 0.0,
+      "share_of_total_mttr_pct": 0.6,
+      "cumulative_mttr_pct": 100.0,
+      "is_top_pareto_driver": false
+    }
+  ]
+}

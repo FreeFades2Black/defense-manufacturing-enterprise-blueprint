@@ -1,0 +1,18 @@
+# ==============================================================================
+# METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
+# Artifact:        04-program-command-gateway/app.yaml
+# Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
+# NIST SP 800-171: 3.12.3 (Continuous Operational & Security Monitoring)
+# ITIL 4 / PMI:    ITIL 4 Measurement & Reporting | PMI Executive Control Plane
+# ==============================================================================
+command:
+  - "streamlit"
+  - "run"
+  - "04-program-command-gateway/app.py"
+  - "--server.port"
+  - "8501"
+env:
+  - name: "ENCLAVE_ID"
+    value: "enclave-cui-prod"
+  - name: "MANUFACTURING_SITE_ID"
+    value: "site-mfg-01"

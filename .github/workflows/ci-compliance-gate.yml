@@ -1,0 +1,54 @@
+# ==============================================================================
+# METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
+# Artifact:        .github/workflows/ci-compliance-gate.yml
+# Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
+# NIST SP 800-171: 3.4.3 (System Change Control), 3.12.1 (Security Assessment),
+#                  3.12.3 (Continuous Compliance Monitoring)
+# ITIL 4 / PMI:    ITIL 4 Change Enablement & Release Mgmt |
+#                  PMI Continuous Quality & FinOps Gate Enforcement
+# ==============================================================================
+
+name: CMMC Level 2 Compliance, Sanitization & Medallion Telemetry CI Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  compliance-and-telemetry-gate:
+    name: Verify RFC-5737 Sanitization, NIST 800-171 Dossier & Medallion Lakehouse
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate Deterministic 90-Day Synthetic Telemetry & CMDB Fixtures
+        run: python scripts/generate_synthetic_telemetry.py
+
+      - name: Run ITSM Medallion Lakehouse Pipeline (Bronze -> Silver -> Gold)
+        run: python 02-itsm-medallion-telemetry/pipeline.py
+
+      - name: Generate CMMC Level 2 Security Dossier & FinOps Gate Evaluation
+        run: |
+          python 03-policy-as-code-governance/generate_security_dossier.py
+          python 03-policy-as-code-governance/evaluate_finops_gate.py
+
+      - name: Enforce Strict Sanitization (RFC-5737 IPs & NIST/ITIL/PMI Metadata Headers)
+        run: python scripts/verify_sanitization.py
+
+      - name: Execute Pytest Verification Suite
+        run: pytest -v

@@ -1,0 +1,96 @@
+﻿{
+    "GeneratedAtUtc":  "2026-11-17T21:31:19Z",
+    "DiscoveryMode":  "Sanitized-Baseline-Simulation",
+    "DomainFqdn":  "example-mfg.local",
+    "EnclaveSubnet":  "192.0.2.0/24",
+    "NistControlsMapped":  [
+                               "3.1.1",
+                               "3.1.5",
+                               "3.4.1",
+                               "3.7.1",
+                               "3.11.2"
+                           ],
+    "IdentityHygiene":  {
+                            "StaleThresholdDays":  90,
+                            "StaleUserCount":  3,
+                            "StaleComputerCount":  2,
+                            "StaleUsers":  [
+                                               {
+                                                   "SamAccountName":  "svc-legacy-erp-01",
+                                                   "Department":  "site-mfg-01",
+                                                   "LastLogonDaysAgo":  142,
+                                                   "PasswordNeverExpires":  true
+                                               },
+                                               {
+                                                   "SamAccountName":  "usr-contractor-plm-04",
+                                                   "Department":  "enclave-cui-prod",
+                                                   "LastLogonDaysAgo":  118,
+                                                   "PasswordNeverExpires":  false
+                                               },
+                                               {
+                                                   "SamAccountName":  "svc-mes-collector-02",
+                                                   "Department":  "site-mfg-01",
+                                                   "LastLogonDaysAgo":  97,
+                                                   "PasswordNeverExpires":  true
+                                               }
+                                           ],
+                            "StaleComputers":  [
+                                                   {
+                                                       "Name":  "WKS-MFG01-CAD09",
+                                                       "IPv4Address":  "198.51.100.89",
+                                                       "OperatingSystem":  "Windows 10 Enterprise LTSC",
+                                                       "LastLogonDaysAgo":  114
+                                                   },
+                                                   {
+                                                       "Name":  "SRV-ENCLAVE-OLD02",
+                                                       "IPv4Address":  "192.0.2.74",
+                                                       "OperatingSystem":  "Windows Server 2016 Standard",
+                                                       "LastLogonDaysAgo":  165
+                                                   }
+                                               ],
+                            "PrivilegedGroupAudit":  [
+                                                         {
+                                                             "GroupName":  "Domain Admins",
+                                                             "MemberCount":  14,
+                                                             "NestedGroupCount":  3,
+                                                             "CmmcFinding":  "Excessive privileged accounts (\u003e8 threshold)"
+                                                         },
+                                                         {
+                                                             "GroupName":  "Enclave-CUI-Admins",
+                                                             "MemberCount":  6,
+                                                             "NestedGroupCount":  0,
+                                                             "CmmcFinding":  "Compliant"
+                                                         },
+                                                         {
+                                                             "GroupName":  "Site-MFG-01-Server-Operators",
+                                                             "MemberCount":  11,
+                                                             "NestedGroupCount":  2,
+                                                             "CmmcFinding":  "Nested group debt detected"
+                                                         }
+                                                     ]
+                        },
+    "VirtualizationHealth":  [
+                                 {
+                                     "ClusterName":  "CLUS-HV-ENCLAVE-01.example-mfg.local",
+                                     "Subnet":  "192.0.2.0/24",
+                                     "NodeCount":  4,
+                                     "CpuAllocationPct":  68.5,
+                                     "MemoryUtilizationPct":  74.2,
+                                     "StorageFreeTb":  18.4,
+                                     "BackupLast24hSuccess":  true,
+                                     "OsPatchCompliancePct":  94,
+                                     "ErpPlmCutoverReady":  true
+                                 },
+                                 {
+                                     "ClusterName":  "CLUS-VMW-MFG01-OT.example-mfg.local",
+                                     "Subnet":  "198.51.100.0/24",
+                                     "NodeCount":  3,
+                                     "CpuAllocationPct":  84,
+                                     "MemoryUtilizationPct":  88.5,
+                                     "StorageFreeTb":  3.1,
+                                     "BackupLast24hSuccess":  false,
+                                     "OsPatchCompliancePct":  78.5,
+                                     "ErpPlmCutoverReady":  false
+                                 }
+                             ]
+}
