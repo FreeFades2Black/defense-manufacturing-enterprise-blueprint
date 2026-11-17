@@ -12,6 +12,7 @@ ITIL 4 / PMI:    ITIL 4 Release & Continual Improvement Mgmt |
 
 Streamlit / Databricks App Operational Control Plane for Defense Manufacturing
 Enterprise Modernization (IFS Cloud ERP, Aras Innovator PLM, CMMC Level 2).
+Designed for single-screen executive command demos on Omarchy Linux.
 """
 
 from __future__ import annotations
@@ -33,6 +34,7 @@ def render_app() -> None:
     st.set_page_config(
         page_title="Defense Manufacturing Transformation & CMMC L2 Control Plane",
         layout="wide",
+        initial_sidebar_state="collapsed",
     )
 
     state = ensure_all_gold_artifacts()
@@ -42,7 +44,7 @@ def render_app() -> None:
     fin = state["finops_gate"]
     cut = state["cutover_summary"]
 
-    st.title("Defense Manufacturing Enterprise Blueprint — Command Gateway")
+    st.title("Defense Manufacturing Enterprise Blueprint — Operational Command Gateway")
     st.caption(
         "Sanitized Scope: `org-enterprise-it` | `enclave-cui-prod (192.0.2.0/24)` | "
         "`site-mfg-01 (198.51.100.0/24)` | `example-mfg.local` | NIST SP 800-171 Rev 2 / CMMC Level 2"
@@ -61,9 +63,9 @@ def render_app() -> None:
         f"${evm['schedule_variance_usd']:+,}",
     )
     col3.metric(
-        "90d Ticket Ping-Pong (>=3 Hops)",
+        "90d Ping-Pong Rate (>=3 Hops)",
         f"{med['incident_kpis']['ping_pong_rate_pct']}%",
-        f"{med['incident_kpis']['ping_pong_ticket_count']} tickets",
+        f"{med['incident_kpis']['sys_audit_transitions_logged']} sys_audit hops",
         delta_color="inverse",
     )
     col4.metric(
@@ -75,7 +77,7 @@ def render_app() -> None:
     col5.metric(
         "CMMC L2 Policy Gate",
         f"{sec['compliance_score_pct']}%",
-        sec["gate_status"],
+        f"{sec['gate_status']} ({sec['controls_passed']}/{sec['controls_evaluated']})",
     )
     col6.metric(
         "ERP/PLM Cutover Readiness",
@@ -83,65 +85,52 @@ def render_app() -> None:
         f"{cut['readiness_pct']}%",
     )
 
-    tab_evm, tab_telemetry, tab_raid, tab_cutover = st.tabs(
-        [
-            "1. Earned Value (CPI/SPI) & FinOps",
-            "2. Week-1 ITSM & CMDB Telemetry (Medallion)",
-            "3. RAID Risk Register & 30-Day Roadmap",
-            "4. ERP/PLM Cutover & CMMC L2 Security Dossier",
+    st.divider()
+
+    # Single-Screen Executive Command Quadrant (2x2 Grid)
+    left_top, right_top = st.columns(2)
+
+    with left_top:
+        st.subheader("1. Earned Value (CPI / SPI) — ERP, PLM & Enclave Workstreams")
+        ws_df = pd.DataFrame(state["program"]["workstreams"])[
+            ["workstream_id", "name", "cpi", "spi", "planned_value_usd", "earned_value_usd", "actual_cost_usd", "status"]
         ]
-    )
+        st.dataframe(ws_df, use_container_width=True, hide_index=True)
 
-    with tab_evm:
-        st.subheader("Enterprise Transformation Workstreams — Earned Value Management")
-        ws_df = pd.DataFrame(state["program"]["workstreams"])
-        st.dataframe(ws_df, use_container_width=True)
+    with right_top:
+        st.subheader("2. Gold Layer: 80/20 Pareto Bottlenecks (`incident` + `sys_audit`)")
+        pareto_df = pd.DataFrame(med["top_pareto_bottlenecks"])[
+            ["subcategory", "ticket_count", "avg_hops", "avg_mttr_hours", "sla_breach_rate_pct", "cumulative_mttr_pct"]
+        ]
+        st.dataframe(pareto_df, use_container_width=True, hide_index=True)
 
-        st.subheader("Continuous FinOps & Infracost Cloud Guardrail (`03-policy-as-code-governance`)")
-        f1, f2, f3 = st.columns(3)
-        f1.metric("Approved Enclave Budget Ceiling", f"${fin['approved_monthly_budget_usd']:,.2f}/mo")
-        f2.metric(
-            "Proposed Monthly Cloud Run-Rate",
-            f"${fin['proposed_monthly_cost_usd']:,.2f}/mo",
-            f"+{fin['monthly_cost_delta_pct']}% vs baseline",
-        )
-        f3.metric("FinOps Gate Verdict", fin["finops_gate_status"], f"${fin['budget_headroom_usd']:,.2f} headroom")
-        st.dataframe(pd.DataFrame(fin["resource_breakdown"]), use_container_width=True)
+    left_bottom, right_bottom = st.columns(2)
 
-    with tab_telemetry:
-        st.subheader("Gold Layer: 80/20 Pareto Ranking of ServiceNow Queue Friction (90-Day Window)")
-        st.markdown(
-            "> **Ground-Truth Finding**: Multi-hop reassignments (`Corp-IT-Tier1 -> Site-MFG-01-IT -> Enclave-SecOps`) "
-            "on **GCC High MFA provisioning** and **IFS Cloud ERP role entitlements** drive over **55%** of total queue hours."
-        )
-        pareto_df = pd.DataFrame(med["top_pareto_bottlenecks"])
-        st.dataframe(pareto_df, use_container_width=True)
+    with left_bottom:
+        st.subheader("3. Active Program RAID Register (NIST SP 800-171 Mapped)")
+        raid_df = pd.DataFrame(state["program"]["raid_register"])[
+            ["id", "type", "severity", "title", "nist_control", "target_closure_days"]
+        ]
+        st.dataframe(raid_df, use_container_width=True, hide_index=True)
 
-        st.subheader("CMDB & ServiceNow MID Server Health (`mid-mfg-01.example-mfg.local`)")
-        c1, c2, c3 = st.columns(3)
-        c1.metric("Total Audited Server CIs", med["cmdb_and_mid_kpis"]["total_server_cis"])
-        c2.metric(
-            "MID Server WinRM-5986 Timeout Rate",
-            f"{med['cmdb_and_mid_kpis']['mid_discovery_failure_rate_pct']}%",
-        )
-        c3.metric(
-            "Enclave OS Patch Compliance",
-            f"{med['cmdb_and_mid_kpis']['os_patch_compliance_pct']}%",
-        )
+    with right_bottom:
+        st.subheader(f"4. ERP/PLM Cutover Readiness & CMMC Gate (`{cut['overall_go_no_go']}`)")
+        cut_df = pd.DataFrame(state["program"]["cutover_readiness_checklist"])[
+            ["gate_id", "category", "criterion", "nist_control", "ready"]
+        ]
+        st.dataframe(cut_df, use_container_width=True, hide_index=True)
 
-    with tab_raid:
-        st.subheader("Active Program RAID Register (Mapped to NIST SP 800-171 Controls)")
-        raid_df = pd.DataFrame(state["program"]["raid_register"])
-        st.dataframe(raid_df, use_container_width=True)
-
-    with tab_cutover:
-        st.subheader(f"ERP / PLM Production Cutover Readiness — Verdict: `{cut['overall_go_no_go']}`")
-        cut_df = pd.DataFrame(state["program"]["cutover_readiness_checklist"])
-        st.dataframe(cut_df, use_container_width=True)
-
-        st.subheader("Automated CMMC Level 2 & NIST SP 800-171 Verification Dossier")
-        sec_df = pd.DataFrame(sec["control_verifications"])
-        st.dataframe(sec_df, use_container_width=True)
+    with st.expander("Drilldown: ServiceNow `sys_audit` Queue Handoff Matrix & FinOps Infracost Breakdown"):
+        d1, d2 = st.columns(2)
+        with d1:
+            st.markdown("**`sys_audit` Multi-Hop Queue Transfer Matrix**")
+            st.dataframe(pd.DataFrame(med.get("sys_audit_handoff_matrix", [])), use_container_width=True, hide_index=True)
+        with d2:
+            st.markdown(
+                f"**Infracost Monthly Cloud Guardrail**: `${fin['proposed_monthly_cost_usd']:,.2f}/mo` "
+                f"vs `${fin['approved_monthly_budget_usd']:,.2f}/mo` budget (`{fin['finops_gate_status']}`)"
+            )
+            st.dataframe(pd.DataFrame(fin["resource_breakdown"]), use_container_width=True, hide_index=True)
 
 
 if __name__ == "__main__":

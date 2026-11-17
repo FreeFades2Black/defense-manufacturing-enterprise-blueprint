@@ -11,8 +11,9 @@ ITIL 4 / PMI:    ITIL 4 Measurement & Reporting, Service Configuration Mgmt |
 ================================================================================
 
 Deterministic synthetic telemetry generator producing 90-day ServiceNow ticket
-queues (incident, sc_task, change_request), CMDB Configuration Item (CI) tables
-with MID Server discovery status, and ERP/PLM Program EVM/RAID fixtures.
+queues (incident, sc_req_item, sc_task, change_request, sys_audit), CMDB
+Configuration Item (CI) tables with intentional orphaned CIs & MID Server
+discovery timeouts, and ERP/PLM Program EVM/RAID fixtures.
 """
 
 from __future__ import annotations
@@ -22,7 +23,7 @@ import json
 import random
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 RAW_DATA_DIR = REPO_ROOT / "data" / "raw"
@@ -61,7 +62,7 @@ CATEGORIES_AND_PROFILES = [
         "category": "CMDB & Discovery Infrastructure",
         "subcategory": "MID-Server-Credential-Timeout",
         "weight": 0.11,
-        "hop_range": (2, 5),
+        "hop_range": (3, 5),
         "mttr_range": (18.0, 64.0),
         "sla_hours": 24.0,
         "hop_path": "Corp-IT-Tier1 -> Corp-SNOW-Admins -> Enclave-SecOps -> Site-MFG-01-IT",
@@ -125,7 +126,6 @@ def generate_cmdb_inventory(rng: random.Random, count: int = 120) -> List[Dict[s
         ip_addr = f"{subnet_prefix}.{host_octet}"
         ci_name = f"srv-{zone_id.split('-')[0]}-{idx:03d}.example-mfg.local"
 
-        # Simulate realistic MID server credential / WinRM blocks on 22% of CIs
         discovery_failed = rng.random() < 0.22
         upstream_mapped = not (discovery_failed or rng.random() < 0.08)
         patch_compliant = rng.random() > 0.14
@@ -151,13 +151,15 @@ def generate_cmdb_inventory(rng: random.Random, count: int = 120) -> List[Dict[s
     return records
 
 
-def generate_incidents_90d(
+def generate_incidents_and_sys_audit_90d(
     rng: random.Random, cmdb_cis: List[Dict[str, Any]], count: int = 450
-) -> List[Dict[str, Any]]:
-    """Generates 90 days of synthetic ServiceNow incident records with reassignment hops."""
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Generates 90d ServiceNow incident records and hop-by-hop sys_audit transition logs."""
     base_time = datetime(2026, 11, 15, 12, 0, 0, tzinfo=timezone.utc)
     weights = [p["weight"] for p in CATEGORIES_AND_PROFILES]
     incidents: List[Dict[str, Any]] = []
+    sys_audit_rows: List[Dict[str, Any]] = []
+    audit_seq = 1
 
     for idx in range(1, count + 1):
         profile = rng.choices(CATEGORIES_AND_PROFILES, weights=weights, k=1)[0]
@@ -169,10 +171,11 @@ def generate_incidents_90d(
         resolved_at = opened_at + timedelta(hours=mttr_hours)
         sla_breached = mttr_hours > profile["sla_hours"]
         linked_ci = rng.choice(cmdb_cis)
+        inc_number = f"INC{100000 + idx}"
 
         incidents.append(
             {
-                "number": f"INC{100000 + idx}",
+                "number": inc_number,
                 "opened_at": opened_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "resolved_at": resolved_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "category": profile["category"],
@@ -190,11 +193,41 @@ def generate_incidents_90d(
                 "sla_breached": sla_breached,
             }
         )
-    return incidents
+
+        # Build explicit sys_audit records for each assignment_group transition
+        path_groups = profile["hop_path"].split(" -> ")
+        if hops > 0:
+            hop_Cursor_time = opened_at
+            dwell_per_hop = round(mttr_hours / (hops + 1), 2)
+            for hop_idx in range(hops):
+                old_grp = path_groups[hop_idx % len(path_groups)]
+                new_grp = path_groups[(hop_idx + 1) % len(path_groups)]
+                if old_grp == new_grp:
+                    new_grp = "Enclave-SecOps" if old_grp != "Enclave-SecOps" else "Site-MFG-01-IT"
+                hop_Cursor_time = hop_Cursor_time + timedelta(hours=dwell_per_hop)
+                sys_audit_rows.append(
+                    {
+                        "audit_sys_id": f"AUD-{audit_seq:06d}",
+                        "documentkey": inc_number,
+                        "tablename": "incident",
+                        "fieldname": "assignment_group",
+                        "hop_sequence": hop_idx + 1,
+                        "oldvalue": old_grp,
+                        "newvalue": new_grp,
+                        "dwell_hours_before_transfer": dwell_per_hop,
+                        "sys_created_on": hop_Cursor_time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "reason_code": "Boundary-Escalation-Or-Missing-Entitlement",
+                    }
+                )
+                audit_seq += 1
+
+    return incidents, sys_audit_rows
 
 
-def generate_sc_tasks_90d(rng: random.Random, count: int = 300) -> List[Dict[str, Any]]:
-    """Generates 90 days of ServiceNow Catalog Tasks (sc_task / sc_req_item)."""
+def generate_sc_req_items_and_tasks_90d(
+    rng: random.Random, count: int = 300
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Generates 90 days of ServiceNow Requested Items (sc_req_item) and Catalog Tasks (sc_task)."""
     base_time = datetime(2026, 11, 15, 12, 0, 0, tzinfo=timezone.utc)
     catalog_items = [
         ("GCC-High-M365-License-And-Enclave-Group", "Identity & Access", True, 42.5),
@@ -203,18 +236,40 @@ def generate_sc_tasks_90d(rng: random.Random, count: int = 300) -> List[Dict[str
         ("ServiceNow-ITIL-ReadOnly-Reporting-Role", "ITSM Governance", False, 14.0),
         ("Standard-Enclave-VM-Provisioning-Request", "Hybrid Infrastructure", True, 54.0),
     ]
+    req_items: List[Dict[str, Any]] = []
     tasks: List[Dict[str, Any]] = []
 
     for idx in range(1, count + 1):
         item_name, cat, manual_bottleneck, avg_hrs = rng.choice(catalog_items)
         opened_at = base_time - timedelta(days=rng.uniform(0, 90))
-        hops = rng.randint(2, 5) if manual_bottleneck else rng.randint(0, 1)
+        hops = rng.randint(3, 5) if manual_bottleneck else rng.randint(0, 1)
         fulfillment_hours = round(rng.uniform(avg_hrs * 0.6, avg_hrs * 1.6), 2)
+        ritm_num = f"RITM{300000 + idx}"
+        sctask_num = f"SCTASK{200000 + idx}"
+        sla_breached = fulfillment_hours > 36.0
+
+        req_items.append(
+            {
+                "ritm_number": ritm_num,
+                "opened_at": opened_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "cat_item": item_name,
+                "category": cat,
+                "site_id": "site-mfg-01",
+                "enclave_id": "enclave-cui-prod",
+                "approval_state": "Approved",
+                "stage": "Completed",
+                "reassignment_count": hops,
+                "is_ping_pong_ritm": hops >= 3,
+                "total_delivery_hours": fulfillment_hours,
+                "sla_breached": sla_breached,
+                "powershell_rest_automatable": manual_bottleneck,
+            }
+        )
 
         tasks.append(
             {
-                "sc_task_number": f"SCTASK{200000 + idx}",
-                "ritm_number": f"RITM{300000 + idx}",
+                "sc_task_number": sctask_num,
+                "ritm_number": ritm_num,
                 "opened_at": opened_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "catalog_item": item_name,
                 "category": cat,
@@ -223,11 +278,11 @@ def generate_sc_tasks_90d(rng: random.Random, count: int = 300) -> List[Dict[str
                 "reassignment_count": hops,
                 "manual_approval_steps": 4 if manual_bottleneck else 1,
                 "fulfillment_hours": fulfillment_hours,
-                "sla_breached": fulfillment_hours > 36.0,
+                "sla_breached": sla_breached,
                 "automation_candidate": manual_bottleneck,
             }
         )
-    return tasks
+    return req_items, tasks
 
 
 def generate_change_requests_90d(rng: random.Random, count: int = 120) -> List[Dict[str, Any]]:
@@ -415,23 +470,27 @@ def generate_all(output_dir: Path = RAW_DATA_DIR) -> Dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     cmdb_rows = generate_cmdb_inventory(rng, count=120)
-    incident_rows = generate_incidents_90d(rng, cmdb_rows, count=450)
-    sc_task_rows = generate_sc_tasks_90d(rng, count=300)
+    incident_rows, sys_audit_rows = generate_incidents_and_sys_audit_90d(rng, cmdb_rows, count=450)
+    req_item_rows, sc_task_rows = generate_sc_req_items_and_tasks_90d(rng, count=300)
     change_rows = generate_change_requests_90d(rng, count=120)
     program_data = generate_program_governance_fixture()
 
     paths = {
         "cmdb": output_dir / "cmdb_ci_inventory.csv",
         "incidents": output_dir / "servicenow_incidents_90d.csv",
+        "sc_req_item": output_dir / "servicenow_sc_req_item_90d.csv",
         "sc_tasks": output_dir / "servicenow_sc_tasks_90d.csv",
         "changes": output_dir / "servicenow_change_requests_90d.csv",
+        "sys_audit": output_dir / "servicenow_sys_audit_90d.csv",
         "program": output_dir / "program_evm_raid_cutover.json",
     }
 
     _write_csv(paths["cmdb"], cmdb_rows)
     _write_csv(paths["incidents"], incident_rows)
+    _write_csv(paths["sc_req_item"], req_item_rows)
     _write_csv(paths["sc_tasks"], sc_task_rows)
     _write_csv(paths["changes"], change_rows)
+    _write_csv(paths["sys_audit"], sys_audit_rows)
     paths["program"].write_text(json.dumps(program_data, indent=2), encoding="utf-8")
 
     return paths
@@ -441,4 +500,4 @@ if __name__ == "__main__":
     generated = generate_all()
     print("[OK] Generated deterministic Week-1 synthetic telemetry fixtures:")
     for key, file_path in generated.items():
-        print(f"  - {key:<10}: {file_path}")
+        print(f"  - {key:<12}: {file_path}")

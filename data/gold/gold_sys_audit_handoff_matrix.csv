@@ -1,0 +1,16 @@
+oldvalue,newvalue,transfer_count,avg_dwell_hours_before_transfer,total_dwell_hours_lost
+Enclave-SecOps,Site-MFG-01-IT,197,14.06,2770.17
+Corp-IT-Tier1,Org-Identity-Ops,145,17.37,2518.04
+Org-Identity-Ops,Enclave-SecOps,120,17.31,2077.5
+Corp-IT-Tier1,Site-MFG-01-IT,122,15.15,1847.7
+Site-MFG-01-IT,Enclave-SecOps,161,11.29,1817.67
+Enclave-SecOps,ERP-Platform-Team,95,15.89,1509.81
+Site-MFG-01-IT,Corp-IT-Tier1,94,15.61,1466.88
+Site-MFG-01-IT,Corp-Storage-Team,83,10.91,905.4
+ERP-Platform-Team,Corp-IT-Tier1,57,14.68,836.92
+Corp-Storage-Team,PLM-Engineering-Support,64,11.37,727.52
+Corp-IT-Tier1,Corp-SNOW-Admins,56,11.96,669.89
+Corp-SNOW-Admins,Enclave-SecOps,46,12.51,575.6
+Site-MFG-01-IT,Corp-Network-Eng,55,9.97,548.56
+PLM-Engineering-Support,Site-MFG-01-IT,43,10.02,430.73
+Corp-Network-Eng,Enclave-SecOps,40,10.23,409.35

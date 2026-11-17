@@ -1,6 +1,6 @@
 catalog_item,category,automation_candidate,request_count,avg_hops,avg_fulfillment_hours,sla_breach_count
-Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,True,63,3.56,59.96,60
-GCC-High-M365-License-And-Enclave-Group,Identity & Access,True,58,3.52,45.32,39
-IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,True,54,3.44,43.65,40
-Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,True,59,3.37,36.01,34
-ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,False,66,0.55,15.38,0
+Standard-Enclave-VM-Provisioning-Request,Hybrid Infrastructure,True,62,4.06,64.42,61
+GCC-High-M365-License-And-Enclave-Group,Identity & Access,True,54,3.91,45.93,40
+IFS-Cloud-Shop-Floor-Supervisor-Role,ERP / PLM Access,True,58,3.86,40.56,39
+Aras-Innovator-CUI-Drawing-Vault-Read,ERP / PLM Access,True,66,4.11,33.36,30
+ServiceNow-ITIL-ReadOnly-Reporting-Role,ITSM Governance,False,60,0.58,15.55,0

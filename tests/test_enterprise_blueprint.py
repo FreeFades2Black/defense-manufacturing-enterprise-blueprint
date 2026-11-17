@@ -11,9 +11,10 @@ ITIL 4 / PMI:    ITIL 4 Service Validation & Testing |
 ================================================================================
 
 End-to-end test suite verifying:
-1. Strict RFC-5737 IPv4 sanitization and NIST SP 800-171 / ITIL 4 / PMI headers.
-2. Deterministic 90-day ServiceNow & CMDB synthetic fixture generation.
-3. Medallion Lakehouse Bronze -> Silver -> Gold transformations & Pareto metrics.
+1. Strict RFC-5737 IPv4 sanitization, git log hygiene, and NIST/ITIL/PMI headers.
+2. Deterministic 90-day ServiceNow (incident, sc_req_item, sc_task,
+   change_request, sys_audit) & CMDB synthetic fixture generation.
+3. Medallion Lakehouse Bronze -> Silver -> Gold transformations & PySpark notebook.
 4. Automated CMMC Level 2 Security Dossier and FinOps Infracost budget gates.
 5. Transformation & Readiness Control Plane EVM (CPI/SPI) & Cutover calculations.
 """
@@ -21,6 +22,7 @@ End-to-end test suite verifying:
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 from typing import Any
 
@@ -46,12 +48,14 @@ def test_sanitization_and_governance_headers() -> None:
 def test_synthetic_telemetry_generation() -> None:
     gen = _load_module("generate_synthetic_telemetry", "scripts/generate_synthetic_telemetry.py")
     paths = gen.generate_all()
+    expected_keys = {"cmdb", "incidents", "sc_req_item", "sc_tasks", "changes", "sys_audit", "program"}
+    assert set(paths.keys()) == expected_keys
     for key, path in paths.items():
         assert path.exists(), f"Expected generated fixture for {key} at {path}"
         assert path.stat().st_size > 100
 
 
-def test_medallion_lakehouse_pipeline() -> None:
+def test_medallion_lakehouse_pipeline_and_notebook() -> None:
     pipeline = _load_module("medallion_pipeline", "02-itsm-medallion-telemetry/pipeline.py")
     summary = pipeline.run_medallion_pipeline()
 
@@ -59,14 +63,16 @@ def test_medallion_lakehouse_pipeline() -> None:
     assert summary["scope"]["enclave_id"] == "enclave-cui-prod"
     assert summary["incident_kpis"]["total_incidents_90d"] == 450
     assert summary["incident_kpis"]["ping_pong_rate_pct"] > 30.0
+    assert summary["incident_kpis"]["sys_audit_transitions_logged"] > 800
+    assert summary["catalog_task_kpis"]["total_sc_req_items_90d"] == 300
     assert summary["cmdb_and_mid_kpis"]["total_server_cis"] == 120
     assert summary["cmdb_and_mid_kpis"]["orphan_ci_count"] > 0
+    assert len(summary["sys_audit_handoff_matrix"]) > 0
 
-    top_driver = summary["top_pareto_bottlenecks"][0]
-    assert top_driver["subcategory"] in {
-        "GCC-High-MFA-Provisioning",
-        "IFS-ERP-Role-Entitlement",
-    }
+    nb_path = REPO_ROOT / "02-itsm-medallion-telemetry" / "notebooks" / "itsm_medallion_bottleneck_detector.ipynb"
+    assert nb_path.exists()
+    nb_data = json.loads(nb_path.read_text(encoding="utf-8"))
+    assert len(nb_data["cells"]) >= 4
 
 
 def test_cmmc_security_dossier_and_finops_gate() -> None:

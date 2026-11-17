@@ -4,14 +4,16 @@ METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
 Artifact:        01-cmmc-enclave-iac/powershell/Invoke-EnclaveReadOnlyDiscovery.ps1
 Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
 NIST SP 800-171: 3.1.1 (Authorized Access), 3.4.1 (Baseline Inventory),
-                 3.7.1 (System Maintenance / Patching), 3.11.2 (Vulnerability Scan)
+                 3.7.1 (System Maintenance / Patching), 3.13.8 (SMBv3 / TLS),
+                 3.13.11 (FIPS 140-2/3 Validated Cryptography)
 ITIL 4 / PMI:    ITIL 4 Service Configuration & Capacity Mgmt |
-                 PMI Week-1 Ground-Truth Baseline Verification
+                 PMI Day-3 Ground-Truth Baseline Verification
 ================================================================================
 .SYNOPSIS
-    Executes Week-1 non-destructive, read-only discovery across Active Directory,
-    Entra ID hybrid state, and Windows Server / Virtualization hosts in the
-    regulated manufacturing enclave (example-mfg.local / 192.0.2.0/24).
+    Executes Day-3 non-destructive, read-only discovery across Active Directory
+    (Get-ADUser, Get-ADGroup, stale computer objects), Windows Server OS patch
+    levels (Get-HotFix), FIPS 140-2/3 cryptographic status, and SMBv3 signing
+    configuration across the regulated manufacturing enclave (192.0.2.0/24).
 #>
 
 [CmdletBinding()]
@@ -32,15 +34,15 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-Write-Host "[INFO] Starting Week-1 Read-Only Enclave Discovery for domain '$DomainFqdn' ($EnclaveSubnet)..." -ForegroundColor Cyan
+Write-Host "[INFO] Starting Day-3 Read-Only Enclave Discovery for domain '$DomainFqdn' ($EnclaveSubnet)..." -ForegroundColor Cyan
 
 $adModuleAvailable = $null -ne (Get-Module -ListAvailable -Name ActiveDirectory)
 
 if ($adModuleAvailable -and ($env:USERDNSDOMAIN -eq $DomainFqdn)) {
-    Write-Host "[INFO] ActiveDirectory module detected in target domain. Executing live read-only queries..." -ForegroundColor Green
+    Write-Host "[INFO] ActiveDirectory module detected in target domain. Running read-only Get-ADUser, Get-ADGroup, Get-ADComputer, FIPS & SMBv3 checks..." -ForegroundColor Green
     $cutoffDate = (Get-Date).AddDays(-$StaleThresholdDays)
-    $staleUsers = @(Get-ADUser -Filter { Enabled -eq $true -and LastLogonDate -lt $cutoffDate } -Properties LastLogonDate)
-    $staleComputers = @(Get-ADComputer -Filter { Enabled -eq $true -and LastLogonDate -lt $cutoffDate } -Properties LastLogonDate, OperatingSystem)
+    $staleUsers = @(Get-ADUser -Filter { Enabled -eq $true -and LastLogonDate -lt $cutoffDate } -Properties LastLogonDate, Department, PasswordNeverExpires)
+    $staleComputers = @(Get-ADComputer -Filter { Enabled -eq $true -and LastLogonDate -lt $cutoffDate } -Properties LastLogonDate, OperatingSystem, IPv4Address)
     $privGroups = @("Domain Admins", "Enterprise Admins", "Schema Admins") | ForEach-Object {
         $members = @(Get-ADGroupMember -Identity $_ -Recursive -ErrorAction SilentlyContinue)
         [PSCustomObject]@{
@@ -48,7 +50,20 @@ if ($adModuleAvailable -and ($env:USERDNSDOMAIN -eq $DomainFqdn)) {
             MemberCount = $members.Count
         }
     }
-    $discoveryMode = "Live-ReadOnly-AD"
+
+    $fipsReg = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\FipsAlgorithmPolicy" -Name "Enabled" -ErrorAction SilentlyContinue
+    $smbCfg = Get-SmbServerConfiguration -ErrorAction SilentlyContinue
+    $recentPatches = @(Get-HotFix -ErrorAction SilentlyContinue | Sort-Object InstalledOn -Descending | Select-Object -First 5)
+
+    $hostCryptoAndSmbBaseline = [PSCustomObject]@{
+        Fips140ModeEnabled     = ($null -ne $fipsReg -and $fipsReg.Enabled -eq 1)
+        Smb1Enabled            = if ($null -ne $smbCfg) { $smbCfg.EnableSMB1Protocol } else { $false }
+        Smb2And3Enabled        = if ($null -ne $smbCfg) { $smbCfg.EnableSMB2Protocol } else { $true }
+        Smb3SigningRequired    = if ($null -ne $smbCfg) { $smbCfg.RequireSecuritySignature } else { $true }
+        Smb3EncryptionEnabled  = if ($null -ne $smbCfg) { $smbCfg.EncryptData } else { $true }
+        RecentHotfixCount      = $recentPatches.Count
+    }
+    $discoveryMode = "Live-ReadOnly-AD-And-Host"
 }
 else {
     Write-Host "[INFO] Executing deterministic sanitized telemetry snapshot for '$DomainFqdn' ($EnclaveSubnet)..." -ForegroundColor Yellow
@@ -66,6 +81,32 @@ else {
         [PSCustomObject]@{ GroupName = "Domain Admins"; MemberCount = 14; NestedGroupCount = 3; CmmcFinding = "Excessive privileged accounts (>8 threshold)" },
         [PSCustomObject]@{ GroupName = "Enclave-CUI-Admins"; MemberCount = 6; NestedGroupCount = 0; CmmcFinding = "Compliant" },
         [PSCustomObject]@{ GroupName = "Site-MFG-01-Server-Operators"; MemberCount = 11; NestedGroupCount = 2; CmmcFinding = "Nested group debt detected" }
+    )
+    $hostCryptoAndSmbBaseline = @(
+        [PSCustomObject]@{
+            HostFqdn              = "srv-enclave-001.example-mfg.local"
+            IPv4Address           = "192.0.2.21"
+            OperatingSystem       = "Windows Server 2022 Datacenter"
+            LatestKbInstalled     = "KB5046615"
+            PatchAgeDays          = 9
+            Fips140ModeEnabled    = $true
+            Smb1Enabled           = $false
+            Smb3SigningRequired   = $true
+            Smb3EncryptionEnabled = $true
+            NistComplianceStatus  = "COMPLIANT"
+        },
+        [PSCustomObject]@{
+            HostFqdn              = "srv-site-014.example-mfg.local"
+            IPv4Address           = "198.51.100.44"
+            OperatingSystem       = "Windows Server 2019 Standard"
+            LatestKbInstalled     = "KB5039217"
+            PatchAgeDays          = 64
+            Fips140ModeEnabled    = $false
+            Smb1Enabled           = $false
+            Smb3SigningRequired   = $false
+            Smb3EncryptionEnabled = $false
+            NistComplianceStatus  = "REMEDIATION_REQUIRED (FIPS 3.13.11 & SMBv3 Signing 3.13.8)"
+        }
     )
 }
 
@@ -95,26 +136,28 @@ $hypervisorClusters = @(
 )
 
 $snapshot = [Ordered]@{
-    GeneratedAtUtc       = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
-    DiscoveryMode        = $discoveryMode
-    DomainFqdn           = $DomainFqdn
-    EnclaveSubnet        = $EnclaveSubnet
-    NistControlsMapped   = @("3.1.1", "3.1.5", "3.4.1", "3.7.1", "3.11.2")
-    IdentityHygiene      = [Ordered]@{
-        StaleThresholdDays      = $StaleThresholdDays
-        StaleUserCount          = $staleUsers.Count
-        StaleComputerCount      = $staleComputers.Count
-        StaleUsers              = $staleUsers
-        StaleComputers          = $staleComputers
-        PrivilegedGroupAudit    = $privGroups
+    GeneratedAtUtc            = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+    DiscoveryMode             = $discoveryMode
+    DomainFqdn                = $DomainFqdn
+    EnclaveSubnet             = $EnclaveSubnet
+    NistControlsMapped        = @("3.1.1", "3.1.5", "3.4.1", "3.7.1", "3.11.2", "3.13.8", "3.13.11")
+    IdentityHygiene           = [Ordered]@{
+        StaleThresholdDays    = $StaleThresholdDays
+        StaleUserCount        = $staleUsers.Count
+        StaleComputerCount    = $staleComputers.Count
+        StaleUsers            = $staleUsers
+        StaleComputers        = $staleComputers
+        PrivilegedGroupAudit  = $privGroups
     }
-    VirtualizationHealth = $hypervisorClusters
+    HostFipsAndSmb3Audit      = $hostCryptoAndSmbBaseline
+    VirtualizationHealth      = $hypervisorClusters
 }
 
-$parentDir = Split-Path -Parent $OutputPath
+$normalizedOutputPath = $OutputPath -replace "\\", "/"
+$parentDir = Split-Path -Parent $normalizedOutputPath
 if ($parentDir -and -not (Test-Path $parentDir)) {
     New-Item -ItemType Directory -Path $parentDir -Force | Out-Null
 }
 
-$snapshot | ConvertTo-Json -Depth 6 | Set-Content -Path $OutputPath -Encoding UTF8
-Write-Host "[OK] Enclave read-only discovery report written to: $OutputPath" -ForegroundColor Green
+$snapshot | ConvertTo-Json -Depth 6 | Set-Content -Path $normalizedOutputPath -Encoding UTF8
+Write-Host "[OK] Enclave read-only discovery report written to: $normalizedOutputPath" -ForegroundColor Green
