@@ -50,6 +50,30 @@ flowchart TB
 
 ---
 
+## Operational Usage: How This Blueprint Accelerates Day-1 Execution
+
+This repository is a **vendor-neutral reference architecture and operational playbook** designed for hybrid Technical Program Managers and Senior Systems Engineers operating in regulated manufacturing and defense industrial base (DIB) environments (NIST SP 800-171 Rev 2 / CMMC Level 2). 
+
+Rather than being deployed directly into a production enclave, these modules serve as **pre-engineered architectural patterns, diagnostic schemas, and governance templates** that can be rapidly adapted inside an organization's approved internal boundary:
+
+### 1. Week-1 Reconnaissance & Bottleneck Isolation (`02-itsm-medallion-telemetry`)
+* **Operational Problem:** New technical leaders often lose their first 60 days relying on anecdotal status reports while ITSM ticket queues stall due to multi-hop reassignments and stale CMDB records.
+* **Day-1 Application:** Using the exact ServiceNow table schemas (`incident`, `sc_req_item`, `change_request`, `sys_audit`) and Bronze-Silver-Gold medallion logic defined in Module 02, an engineer can export 90 days of approved read-only queue telemetry into an internal analytics workspace (e.g., Databricks or local Python/SQL) to mathematically isolate the top 20% of ticket categories driving 80% of SLA breaches.
+
+### 2. Non-Disruptive Enclave Auditing (`01-cmmc-enclave-iac`)
+* **Operational Problem:** Inheriting hybrid Windows Server, Active Directory, and Entra ID environments without an accurate baseline creates hidden technical debt ahead of ERP/PLM transformations.
+* **Day-1 Application:** The read-only discovery patterns and PowerShell DSC hardening baselines provide a zero-footprint audit framework to verify compute headroom, patch compliance, FIPS 140-2/3 cryptography enforcement, and stale identity sprawl before proposing infrastructure changes.
+
+### 3. Shifting Compliance Left (`03-policy-as-code-governance`)
+* **Operational Problem:** NIST SP 800-171 and CMMC Level 2 evidence gathering is frequently treated as a manual, post-deployment fire drill that delays Change Advisory Board (CAB) approvals.
+* **Day-1 Application:** The OPA/Rego policy gates, `Infracost` budget checks, and automated Security Dossier generators demonstrate how to embed compliance verification directly into CI/CD pipelines—giving ISSMs and Corporate InfoSec continuous, auditable artifacts alongside cost-variance guardrails.
+
+### 4. Unified Executive & IPT Command (`04-program-command-gateway`)
+* **Operational Problem:** Technical telemetry, cybersecurity POA&Ms, and program Earned Value metrics (CPI/SPI) typically live in disconnected silos.
+* **Day-1 Application:** The Streamlit / Databricks App control plane serves as a working UI blueprint for consolidating infrastructure readiness, ITSM resolution trends, RAID risk registers, and ERP/PLM cutover milestones into a single executive readout for Integrated Product Teams (IPTs).
+
+---
+
 ## 1. Repository & Modular Architecture Specification
 
 - **Target Repository Name**: `defense-manufacturing-enterprise-blueprint`
@@ -59,7 +83,7 @@ flowchart TB
 | Module Directory | Module Title | Core Technical & Governance Scope |
 | :--- | :--- | :--- |
 | [`01-cmmc-enclave-iac/`](01-cmmc-enclave-iac/) | **CMMC Level 2 Hybrid Enclave Baseline** | Modular Terraform and PowerShell DSC/hardening scripts mapped to NIST SP 800-171 Rev 2 controls, Entra ID / Active Directory conditional access, Windows Server/virtualization baselines, and automated TLS certificate lifecycle checks. |
-| [`02-itsm-medallion-telemetry/`](02-itsm-medallion-telemetry/) | **ITSM Queue & Bottleneck Lakehouse** | PySpark + Delta Lake (with local analytical engine execution) Bronze/Silver/Gold ingestion pipeline using synthetic ServiceNow ticket schemas (`incident`, `sc_task`, `change_request`) to detect multi-hop ticket reassignments, SLA breach risks, and CMDB orphan rates. |
+| [`02-itsm-medallion-telemetry/`](02-itsm-medallion-telemetry/) | **ITSM Queue & Bottleneck Lakehouse** | PySpark + Delta Lake (with local analytical engine execution & Jupyter/Databricks notebook) Bronze/Silver/Gold ingestion pipeline using synthetic ServiceNow ticket schemas (`incident`, `sc_req_item`, `sc_task`, `change_request`, `sys_audit`) to detect multi-hop ticket reassignments, SLA breach risks, and CMDB orphan rates. |
 | [`03-policy-as-code-governance/`](03-policy-as-code-governance/) | **Continuous Compliance & FinOps Gate** | OPA/Rego zero-trust policy checks paired with automated Markdown/JSON Security Dossier generation and Infracost PR diffs to enforce budget guardrails and audit readiness in CI/CD. |
 | [`04-program-command-gateway/`](04-program-command-gateway/) | **Transformation & Readiness Control Plane** | Streamlit / Databricks App operational gateway displaying synthetic Earned Value metrics (CPI/SPI), RAID risk registers, and cutover readiness checklists for ERP/PLM modernization. |
 
@@ -138,31 +162,31 @@ pip install -r requirements.txt
 ```
 
 ### Step 2: Generate Deterministic 90-Day Synthetic Telemetry & CMDB Fixtures
-Generates realistic 90-day ServiceNow `incident`, `sc_task`, `change_request`, `sys_audit` logs (with multi-hop reassignments and SLA breaches), CMDB server inventory (`cmdb_ci_server`), MID Server error logs (`ecc_agent_log`), and ERP/PLM EVM/RAID fixtures:
+Generates realistic 90-day ServiceNow `incident`, `sc_req_item`, `sc_task`, `change_request`, `sys_audit` logs (with multi-hop reassignments and SLA breaches), CMDB server inventory (`cmdb_ci_inventory`), and ERP/PLM EVM/RAID fixtures:
 ```bash
-python scripts/generate_synthetic_telemetry.py
+python3 scripts/generate_synthetic_telemetry.py
 ```
 
 ### Step 3: Execute the ITSM & CMDB Medallion Lakehouse Pipeline
 Runs the Bronze -> Silver -> Gold analytical transformations and produces the Week-1 Pareto bottleneck report and Gold KPI tables:
 ```bash
-python 02-itsm-medallion-telemetry/pipeline.py
+python3 02-itsm-medallion-telemetry/pipeline.py
 ```
 
 ### Step 4: Run Continuous Compliance & FinOps Governance Gate
 Evaluates CMMC Level 2 infrastructure compliance and Infracost budget guardrails, outputting a timestamped Markdown and JSON **Security Dossier**:
 ```bash
-python 03-policy-as-code-governance/generate_security_dossier.py
-python 03-policy-as-code-governance/evaluate_finops_gate.py
+python3 03-policy-as-code-governance/generate_security_dossier.py
+python3 03-policy-as-code-governance/evaluate_finops_gate.py
 ```
 
 ### Step 5: Launch the Transformation & Readiness Control Plane (Streamlit / Databricks App)
 ```bash
-streamlit run 04-program-command-gateway/app.py
+./04-program-command-gateway/launch_gateway.sh
 ```
 
 ### Step 6: Verify Sanitization & Run Automated Test Suite
 ```bash
-python scripts/verify_sanitization.py
+python3 scripts/verify_sanitization.py
 pytest -v
 ```
