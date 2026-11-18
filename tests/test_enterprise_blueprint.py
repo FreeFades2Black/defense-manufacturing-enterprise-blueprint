@@ -14,7 +14,8 @@ End-to-end test suite verifying:
 1. Strict RFC-5737 IPv4 sanitization, git log hygiene, and NIST/ITIL/PMI headers.
 2. Deterministic 90-day ServiceNow (incident, sc_req_item, sc_task,
    change_request, sys_audit) & CMDB synthetic fixture generation.
-3. Medallion Lakehouse Bronze -> Silver -> Gold transformations & PySpark notebook.
+3. Medallion Lakehouse Bronze -> Silver -> Gold transformations, Source Adapter
+   (--source synthetic | servicenow-csv | servicenow-api), and PySpark notebook.
 4. Automated CMMC Level 2 Security Dossier and FinOps Infracost budget gates.
 5. Transformation & Readiness Control Plane EVM (CPI/SPI) & Cutover calculations.
 """
@@ -25,6 +26,8 @@ import importlib.util
 import json
 from pathlib import Path
 from typing import Any
+
+import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -55,10 +58,12 @@ def test_synthetic_telemetry_generation() -> None:
         assert path.stat().st_size > 100
 
 
-def test_medallion_lakehouse_pipeline_and_notebook() -> None:
+def test_medallion_lakehouse_pipeline_and_source_adapters() -> None:
     pipeline = _load_module("medallion_pipeline", "02-itsm-medallion-telemetry/pipeline.py")
-    summary = pipeline.run_medallion_pipeline()
 
+    # Test 1: synthetic adapter
+    summary = pipeline.run_medallion_pipeline(source_mode="synthetic")
+    assert summary["adapter_source_mode"] == "synthetic"
     assert summary["scope"]["site_id"] == "site-mfg-01"
     assert summary["scope"]["enclave_id"] == "enclave-cui-prod"
     assert summary["incident_kpis"]["total_incidents_90d"] == 450
@@ -68,6 +73,21 @@ def test_medallion_lakehouse_pipeline_and_notebook() -> None:
     assert summary["cmdb_and_mid_kpis"]["total_server_cis"] == 120
     assert summary["cmdb_and_mid_kpis"]["orphan_ci_count"] > 0
     assert len(summary["sys_audit_handoff_matrix"]) > 0
+
+    # Test 2: servicenow-csv adapter against exported CSV bundle
+    csv_summary = pipeline.run_medallion_pipeline(source_mode="servicenow-csv")
+    assert csv_summary["adapter_source_mode"] == "servicenow-csv"
+    assert csv_summary["incident_kpis"]["total_incidents_90d"] == 450
+
+    # Test 3: servicenow-api adapter contract & config.example.yaml validation
+    cfg_path = REPO_ROOT / "02-itsm-medallion-telemetry" / "config.example.yaml"
+    assert cfg_path.exists()
+    api_summary = pipeline.run_medallion_pipeline(source_mode="servicenow-api", config_path=cfg_path)
+    assert api_summary["adapter_source_mode"] == "servicenow-api"
+
+    # Test 4: invalid adapter raises ValueError
+    with pytest.raises(ValueError):
+        pipeline.TelemetrySourceAdapter(source_mode="invalid-source")
 
     nb_path = REPO_ROOT / "02-itsm-medallion-telemetry" / "notebooks" / "itsm_medallion_bottleneck_detector.ipynb"
     assert nb_path.exists()

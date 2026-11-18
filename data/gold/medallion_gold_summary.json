@@ -1,5 +1,6 @@
 {
-  "generated_at_utc": "2026-11-17T21:50:56Z",
+  "generated_at_utc": "2026-11-18T18:05:36Z",
+  "adapter_source_mode": "servicenow-api",
   "scope": {
     "organization": "org-enterprise-it",
     "site_id": "site-mfg-01",

@@ -1,0 +1,42 @@
+# ==============================================================================
+# METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
+# Artifact:        02-itsm-medallion-telemetry/config.example.yaml
+# Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
+# NIST SP 800-171: 3.1.1 (Scoped Read-Only Service Principal),
+#                  3.3.1 (Audit Log Extraction), 3.4.1 (CMDB Baseline)
+# ITIL 4 / PMI:    ITIL 4 Continual Improvement & Service Config Mgmt |
+#                  PMI Day-1 Synthetic-to-Day-30 Live Telemetry Transition
+# ==============================================================================
+
+adapter:
+  default_source: "synthetic" # Options: synthetic | servicenow-csv | servicenow-api
+  lookback_days: 90
+  enclave_scope: "enclave-cui-prod"
+  site_scope: "site-mfg-01"
+  organization_scope: "org-enterprise-it"
+
+paths:
+  raw_dir: "data/raw"
+  gold_dir: "data/gold"
+
+servicenow_csv:
+  incidents_file: "servicenow_incidents_90d.csv"
+  sc_req_item_file: "servicenow_sc_req_item_90d.csv"
+  sc_tasks_file: "servicenow_sc_tasks_90d.csv"
+  change_requests_file: "servicenow_change_requests_90d.csv"
+  sys_audit_file: "servicenow_sys_audit_90d.csv"
+  cmdb_ci_file: "cmdb_ci_inventory.csv"
+
+servicenow_api:
+  instance_url: "https://example-mfg.service-now.com"
+  service_principal: "svc-snow-telemetry-ro@example-mfg.local"
+  auth_token_env_var: "SNOW_RO_API_TOKEN"
+  timeout_seconds: 30
+  batch_limit: 5000
+  tables:
+    incident: "/api/now/table/incident?sysparm_query=opened_at>=javascript:gs.daysAgoStart(90)"
+    sc_req_item: "/api/now/table/sc_req_item?sysparm_query=opened_at>=javascript:gs.daysAgoStart(90)"
+    sc_task: "/api/now/table/sc_task?sysparm_query=opened_at>=javascript:gs.daysAgoStart(90)"
+    change_request: "/api/now/table/change_request?sysparm_query=opened_at>=javascript:gs.daysAgoStart(90)"
+    sys_audit: "/api/now/table/sys_audit?sysparm_query=tablename=incident^fieldname=assignment_group"
+    cmdb_ci_server: "/api/now/table/cmdb_ci_server?sysparm_query=operational_status=1"
