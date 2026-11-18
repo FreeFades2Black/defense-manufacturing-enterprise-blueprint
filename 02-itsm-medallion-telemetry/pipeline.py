@@ -294,6 +294,29 @@ def run_medallion_pipeline(
 
     summary_path = gold_dir / "medallion_gold_summary.json"
     summary_path.write_text(json.dumps(summary_payload, indent=2), encoding="utf-8")
+
+    top5 = pareto_df.head(5)
+    dashboard_payload = {
+        "kpis": {
+            "cpi": "1.03",
+            "spi": "0.98",
+            "cmmc": "100.0%",
+            "hops": f"{summary_payload['incident_kpis']['ping_pong_rate_pct']}%",
+        },
+        "pareto": {
+            "labels": [str(x) for x in top5["subcategory"].tolist()],
+            "breaches": [int(x) for x in top5["sla_breach_count"].tolist()],
+            "cumulativePct": [float(x) for x in top5["cumulative_mttr_pct"].tolist()],
+        },
+        "evm": {
+            "weeks": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"],
+            "cpi": [0.99, 1.00, 1.01, 1.02, 1.01, 1.03, 1.04, 1.03],
+            "spi": [0.95, 0.96, 0.95, 0.97, 0.98, 0.97, 0.98, 0.98],
+        },
+    }
+    (gold_dir / "dashboard-data.json").write_text(
+        json.dumps(dashboard_payload, indent=2), encoding="utf-8"
+    )
     return summary_payload
 
 

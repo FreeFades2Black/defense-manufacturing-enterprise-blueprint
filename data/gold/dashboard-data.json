@@ -1,0 +1,63 @@
+{
+  "kpis": {
+    "cpi": "1.03",
+    "spi": "0.98",
+    "cmmc": "100.0%",
+    "hops": "71.3%"
+  },
+  "pareto": {
+    "labels": [
+      "GCC-High-MFA-Provisioning",
+      "IFS-ERP-Role-Entitlement",
+      "Aras-PLM-CAD-Vault-Sync",
+      "MID-Server-Credential-Timeout",
+      "OT-VLAN-Firewall-Exception"
+    ],
+    "breaches": [
+      103,
+      95,
+      64,
+      46,
+      40
+    ],
+    "cumulativePct": [
+      38.2,
+      67.5,
+      78.8,
+      89.7,
+      96.6
+    ]
+  },
+  "evm": {
+    "weeks": [
+      "W1",
+      "W2",
+      "W3",
+      "W4",
+      "W5",
+      "W6",
+      "W7",
+      "W8"
+    ],
+    "cpi": [
+      0.99,
+      1.0,
+      1.01,
+      1.02,
+      1.01,
+      1.03,
+      1.04,
+      1.03
+    ],
+    "spi": [
+      0.95,
+      0.96,
+      0.95,
+      0.97,
+      0.98,
+      0.97,
+      0.98,
+      0.98
+    ]
+  }
+}

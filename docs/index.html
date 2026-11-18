@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Command Gateway &amp; Enclave Telemetry | Defense Manufacturing Blueprint</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #111827;
+      --border: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --green: #10b981;
+      --amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      padding: 28px 36px;
+      max-width: 1440px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    h1 { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    h3 { font-size: 0.98rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+    code {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.84rem;
+    }
+    .badge-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+    }
+    .badge.ok {
+      background: rgba(16, 185, 129, 0.14);
+      color: var(--green);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .kpi-label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .kpi-value { font-size: 2rem; font-weight: 700; margin: 6px 0 4px; color: var(--text); }
+    .kpi-sub { font-size: 0.82rem; color: var(--green); }
+    .kpi-sub.warn { color: var(--amber); }
+    .chart-box { position: relative; height: 270px; width: 100%; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; }
+    .pill { padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .pill.pass { background: rgba(16,185,129,0.15); color: var(--green); }
+    .pill.warn { background: rgba(245,158,11,0.15); color: var(--amber); }
+    footer { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 32px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Program Command Gateway &amp; Enclave Telemetry</h1>
+    <p style="color: var(--muted); font-size: 0.9rem;">
+      Domain: <code>enclave-cui-prod</code> | Site: <code>site-mfg-01</code> | RFC-5737 Sanitized Live Build
+    </p>
+  </div>
+  <div class="badge-row">
+    <span class="badge ok">SANITIZATION VERIFIED</span>
+    <span class="badge">NIST SP 800-171 REV 2</span>
+    <span class="badge">CMMC LEVEL 2 GATE</span>
+  </div>
+</header>
+
+<section class="kpi-grid">
+  <div class="card">
+    <div class="kpi-label">Cost Performance Index (CPI)</div>
+    <div class="kpi-value" id="kpi-cpi">1.03</div>
+    <div class="kpi-sub">Under Budget (+3.0% Variance)</div>
+  </div>
+  <div class="card">
+    <div class="kpi-label">Schedule Performance Index (SPI)</div>
+    <div class="kpi-value" id="kpi-spi">0.98</div>
+    <div class="kpi-sub warn">ERP Cutover Track: Minor Drift</div>
+  </div>
+  <div class="card">
+    <div class="kpi-label">CMMC Level 2 Gate Score</div>
+    <div class="kpi-value" id="kpi-cmmc">96.4%</div>
+    <div class="kpi-sub">106 / 110 Controls Verified</div>
+  </div>
+  <div class="card">
+    <div class="kpi-label">90-Day Multi-Hop Ticket Drag</div>
+    <div class="kpi-value" id="kpi-hops">34.2%</div>
+    <div class="kpi-sub warn">Top 2 Categories = 78% Breaches</div>
+  </div>
+</section>
+
+<section class="chart-grid">
+  <div class="card">
+    <h3>Module 02: ITSM SLA Breach Pareto (Top Queue Bottlenecks)</h3>
+    <div class="chart-box"><canvas id="paretoChart"></canvas></div>
+  </div>
+  <div class="card">
+    <h3>Module 04: ERP/PLM Earned Value Trajectory (CPI vs. SPI)</h3>
+    <div class="chart-box"><canvas id="evmChart"></canvas></div>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Module 03: Policy-as-Code &amp; Continuous Compliance Gate Readout</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Control ID</th>
+        <th>Domain / Gate Check</th>
+        <th>Target Enclave</th>
+        <th>Automated Artifact</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="compliance-table">
+      <tr>
+        <td><code>3.13.11</code></td>
+        <td>FIPS 140-2/3 Validated Cryptography Enforcement</td>
+        <td><code>enclave-cui-prod</code></td>
+        <td><code>Invoke-EnclaveReadOnlyDiscovery.ps1</code></td>
+        <td><span class="pill pass">PASS</span></td>
+      </tr>
+      <tr>
+        <td><code>3.5.3</code></td>
+        <td>Phishing-Resistant MFA for Privileged Admins</td>
+        <td><code>org-enterprise-it</code></td>
+        <td><code>identity_conditional_access.tf</code></td>
+        <td><span class="pill pass">PASS</span></td>
+      </tr>
+      <tr>
+        <td><code>3.4.1</code></td>
+        <td>CMDB Orphan CI &amp; Baseline Drift Detection</td>
+        <td><code>site-mfg-01</code></td>
+        <td><code>gold_pareto_bottlenecks.csv</code></td>
+        <td><span class="pill warn">4 POA&amp;M ITEMS</span></td>
+      </tr>
+      <tr>
+        <td><code>FINOPS-01</code></td>
+        <td>Infracost PR Monthly Delta Threshold (&lt; 8%)</td>
+        <td><code>enclave-cui-prod</code></td>
+        <td><code>finops_infracost_gate.json</code></td>
+        <td><span class="pill pass">PASS (+4.7%)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  Generated automatically via GitHub Actions CI from <code>defense-manufacturing-enterprise-blueprint</code> synthetic medallion telemetry.
+</footer>
+
+<script>
+  const defaultPayload = {
+    kpis: { cpi: "1.03", spi: "0.98", cmmc: "96.4%", hops: "34.2%" },
+    pareto: {
+      labels: ["GCC-High MFA Provisioning", "IFS ERP Role Entitlement", "Aras PLM CAD Vault Sync", "MID Server Timeout", "OT VLAN Firewall"],
+      breaches: [103, 95, 64, 46, 40],
+      cumulativePct: [38.0, 67.8, 78.6, 89.2, 96.1]
+    },
+    evm: {
+      weeks: ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"],
+      cpi: [0.99, 1.00, 1.01, 1.02, 1.01, 1.03, 1.04, 1.03],
+      spi: [0.95, 0.96, 0.95, 0.97, 0.98, 0.97, 0.98, 0.98]
+    }
+  };
+
+  async function initDashboard() {
+    let data = defaultPayload;
+    try {
+      const res = await fetch("./data/dashboard-data.json");
+      if (res.ok) data = await res.json();
+    } catch (_) { /* Fallback to embedded synthetic metrics when opened via file:// */ }
+
+    document.getElementById("kpi-cpi").textContent = data.kpis.cpi;
+    document.getElementById("kpi-spi").textContent = data.kpis.spi;
+    document.getElementById("kpi-cmmc").textContent = data.kpis.cmmc;
+    document.getElementById("kpi-hops").textContent = data.kpis.hops;
+
+    new Chart(document.getElementById("paretoChart"), {
+      type: "bar",
+      data: {
+        labels: data.pareto.labels,
+        datasets: [
+          {
+            label: "SLA Breaches (90d)",
+            data: data.pareto.breaches,
+            backgroundColor: "rgba(56, 189, 248, 0.7)",
+            borderColor: "#38bdf8",
+            borderWidth: 1,
+            yAxisID: "y"
+          },
+          {
+            label: "Cumulative %",
+            data: data.pareto.cumulativePct,
+            type: "line",
+            borderColor: "#f59e0b",
+            backgroundColor: "#f59e0b",
+            tension: 0.3,
+            yAxisID: "y1"
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: "#e2e8f0" } } },
+        scales: {
+          x: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" } },
+          y: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" }, title: { display: true, text: "Ticket Count", color: "#94a3b8" } },
+          y1: { position: "right", min: 0, max: 100, ticks: { color: "#f59e0b" }, grid: { drawOnChartArea: false } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("evmChart"), {
+      type: "line",
+      data: {
+        labels: data.evm.weeks,
+        datasets: [
+          { label: "CPI (Cost Efficiency)", data: data.evm.cpi, borderColor: "#10b981", backgroundColor: "#10b981", tension: 0.25 },
+          { label: "SPI (Schedule Efficiency)", data: data.evm.spi, borderColor: "#38bdf8", backgroundColor: "#38bdf8", tension: 0.25 }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: "#e2e8f0" } } },
+        scales: {
+          x: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" } },
+          y: { min: 0.90, max: 1.10, ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" } }
+        }
+      }
+    });
+  }
+
+  initDashboard();
+</script>
+</body>
+</html>

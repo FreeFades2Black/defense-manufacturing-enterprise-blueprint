@@ -1,5 +1,6 @@
 # Defense Manufacturing Enterprise Blueprint & Day-1 Execution Architecture
 
+[![Live Command Gateway](https://img.shields.io/badge/Live_Command_Gateway-GitHub_Pages_Active-00b4d8?style=flat-square&logo=github)](https://freefades2black.github.io/defense-manufacturing-enterprise-blueprint/)
 [![CMMC Level 2 CI Gate](https://github.com/FreeFades2Black/defense-manufacturing-enterprise-blueprint/actions/workflows/ci-compliance-gate.yml/badge.svg)](https://github.com/FreeFades2Black/defense-manufacturing-enterprise-blueprint/actions/workflows/ci-compliance-gate.yml)
 [![Sanitization Gate](https://img.shields.io/badge/Sanitization_Gate-RFC--5737_Verified-8957e5?style=flat-square)](scripts/verify_sanitization.py)
 [![NIST SP 800-171 Rev 2](https://img.shields.io/badge/NIST_SP_800--171_Rev_2-110_Controls-003366?style=flat-square)](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)

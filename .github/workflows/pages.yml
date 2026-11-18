@@ -1,0 +1,71 @@
+# ==============================================================================
+# METADATA HEADER: ENGINEERING & GOVERNANCE ALIGNMENT
+# Artifact:        .github/workflows/pages.yml
+# Domain Scope:    site-mfg-01 | enclave-cui-prod | org-enterprise-it
+# NIST SP 800-171: 3.1.22 (Public Information Control), 3.12.3 (Continuous Monitoring)
+# ITIL 4 / PMI:    ITIL 4 Measurement & Reporting | PMI Executive Command Readout
+# ==============================================================================
+
+name: Deploy Live Command Gateway to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Synthetic Telemetry & Medallion Pipeline
+        run: |
+          python3 scripts/generate_synthetic_telemetry.py
+          python3 02-itsm-medallion-telemetry/pipeline.py
+          python3 03-policy-as-code-governance/generate_security_dossier.py
+
+      - name: Verify Sanitization Before Publishing
+        run: python3 scripts/verify_sanitization.py
+
+      - name: Stage Static Site Artifact
+        run: |
+          mkdir -p _site/data
+          cp docs/index.html _site/index.html
+          if [ -f data/gold/dashboard-data.json ]; then
+            cp data/gold/dashboard-data.json _site/data/dashboard-data.json
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "_site"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
