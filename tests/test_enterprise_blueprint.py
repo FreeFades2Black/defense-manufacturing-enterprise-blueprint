@@ -122,3 +122,17 @@ def test_program_command_gateway_metrics_engine() -> None:
     assert 0.90 <= state["portfolio_evm"]["portfolio_spi"] <= 1.10
     assert state["cutover_summary"]["total_gates"] == 5
     assert len(state["program"]["raid_register"]) == 4
+
+
+def test_github_pages_dashboard_data_reconciliation() -> None:
+    dashboard_json_path = REPO_ROOT / "data" / "gold" / "dashboard-data.json"
+    assert dashboard_json_path.exists()
+    payload = json.loads(dashboard_json_path.read_text(encoding="utf-8"))
+
+    assert "generatedAtUtc" in payload
+    assert payload["kpis"]["cmmc"] == "96.4%"
+    assert "106 / 110 Controls Verified (4 POA&Ms)" in payload["kpis"]["cmmcSub"]
+    assert "cpiSub" in payload["kpis"]
+    assert "spiSub" in payload["kpis"]
+    assert "hopsSub" in payload["kpis"]
+    assert len(payload["complianceRows"]) == 4

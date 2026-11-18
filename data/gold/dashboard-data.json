@@ -1,10 +1,49 @@
 {
+  "generatedAtUtc": "2026-11-18T18:19:53Z",
   "kpis": {
     "cpi": "1.03",
+    "cpiSub": "Under Budget (+2.6% / $+83,800 Variance)",
     "spi": "0.98",
-    "cmmc": "100.0%",
-    "hops": "71.3%"
+    "spiSub": "ERP Cutover Track: Minor Drift (-2.1%)",
+    "cmmc": "96.4%",
+    "cmmcSub": "106 / 110 Controls Verified (4 POA&Ms)",
+    "hops": "71.3%",
+    "hopsSub": "Top 2 Categories = 56.9% of SLA Breaches"
   },
+  "complianceRows": [
+    {
+      "controlId": "3.13.11",
+      "domain": "FIPS 140-2/3 Validated Cryptography Enforcement",
+      "enclave": "enclave-cui-prod",
+      "artifact": "Invoke-EnclaveReadOnlyDiscovery.ps1",
+      "statusClass": "pass",
+      "status": "PASS (RSA-HSM 4096-BIT)"
+    },
+    {
+      "controlId": "3.5.3",
+      "domain": "Phishing-Resistant MFA for Privileged Admins",
+      "enclave": "org-enterprise-it",
+      "artifact": "identity_conditional_access.tf",
+      "statusClass": "pass",
+      "status": "PASS (FIDO2 / PIV ENFORCED)"
+    },
+    {
+      "controlId": "3.4.1",
+      "domain": "CMDB Orphan CI & Baseline Drift Detection",
+      "enclave": "site-mfg-01",
+      "artifact": "gold_pareto_bottlenecks.csv",
+      "statusClass": "warn",
+      "status": "4 POA&M ITEMS (28 ORPHAN CIs)"
+    },
+    {
+      "controlId": "FINOPS-01",
+      "domain": "Infracost PR Monthly Delta Threshold (< 8.0%)",
+      "enclave": "enclave-cui-prod",
+      "artifact": "finops_infracost_gate.json",
+      "statusClass": "pass",
+      "status": "PASS (+4.69% | $17,190/mo)"
+    }
+  ],
   "pareto": {
     "labels": [
       "GCC-High-MFA-Provisioning",

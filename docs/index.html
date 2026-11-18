@@ -54,11 +54,20 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--muted);
+      text-decoration: none;
     }
     .badge.ok {
       background: rgba(16, 185, 129, 0.14);
       color: var(--green);
       border-color: rgba(16, 185, 129, 0.35);
+    }
+    .badge.link {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+    .badge.link:hover {
+      background: rgba(56, 189, 248, 0.22);
     }
     .kpi-grid {
       display: grid;
@@ -104,7 +113,8 @@
   <div class="badge-row">
     <span class="badge ok">SANITIZATION VERIFIED</span>
     <span class="badge">NIST SP 800-171 REV 2</span>
-    <span class="badge">CMMC LEVEL 2 GATE</span>
+    <span class="badge" id="last-build-pill">Last Pipeline Run: Loading...</span>
+    <a class="badge link" href="./data/dashboard-data.json" target="_blank" rel="noopener">RAW TELEMETRY JSON &#8599;</a>
   </div>
 </header>
 
@@ -112,22 +122,22 @@
   <div class="card">
     <div class="kpi-label">Cost Performance Index (CPI)</div>
     <div class="kpi-value" id="kpi-cpi">1.03</div>
-    <div class="kpi-sub">Under Budget (+3.0% Variance)</div>
+    <div class="kpi-sub" id="kpi-cpi-sub">Under Budget (+2.6% / +$83,800 Variance)</div>
   </div>
   <div class="card">
     <div class="kpi-label">Schedule Performance Index (SPI)</div>
     <div class="kpi-value" id="kpi-spi">0.98</div>
-    <div class="kpi-sub warn">ERP Cutover Track: Minor Drift</div>
+    <div class="kpi-sub warn" id="kpi-spi-sub">ERP Cutover Track: Minor Drift (-2.1%)</div>
   </div>
   <div class="card">
     <div class="kpi-label">CMMC Level 2 Gate Score</div>
     <div class="kpi-value" id="kpi-cmmc">96.4%</div>
-    <div class="kpi-sub">106 / 110 Controls Verified</div>
+    <div class="kpi-sub" id="kpi-cmmc-sub">106 / 110 Controls Verified (4 POA&amp;Ms)</div>
   </div>
   <div class="card">
     <div class="kpi-label">90-Day Multi-Hop Ticket Drag</div>
-    <div class="kpi-value" id="kpi-hops">34.2%</div>
-    <div class="kpi-sub warn">Top 2 Categories = 78% Breaches</div>
+    <div class="kpi-value" id="kpi-hops">71.3%</div>
+    <div class="kpi-sub warn" id="kpi-hops-sub">Top 2 Categories = 54.0% of SLA Breaches</div>
   </div>
 </section>
 
@@ -174,28 +184,72 @@
         <td>CMDB Orphan CI &amp; Baseline Drift Detection</td>
         <td><code>site-mfg-01</code></td>
         <td><code>gold_pareto_bottlenecks.csv</code></td>
-        <td><span class="pill warn">4 POA&amp;M ITEMS</span></td>
+        <td><span class="pill warn">4 POA&amp;M ITEMS (28 ORPHAN CIs)</span></td>
       </tr>
       <tr>
         <td><code>FINOPS-01</code></td>
-        <td>Infracost PR Monthly Delta Threshold (&lt; 8%)</td>
+        <td>Infracost PR Monthly Delta Threshold (&lt; 8.0%)</td>
         <td><code>enclave-cui-prod</code></td>
         <td><code>finops_infracost_gate.json</code></td>
-        <td><span class="pill pass">PASS (+4.7%)</span></td>
+        <td><span class="pill pass">PASS (+4.69%)</span></td>
       </tr>
     </tbody>
   </table>
 </section>
 
 <footer>
-  Generated automatically via GitHub Actions CI from <code>defense-manufacturing-enterprise-blueprint</code> synthetic medallion telemetry.
+  Generated automatically via GitHub Actions CI from <code>defense-manufacturing-enterprise-blueprint</code> synthetic medallion telemetry (<a href="./data/dashboard-data.json" style="color: var(--accent);">view raw JSON payload</a>).
 </footer>
 
 <script>
   const defaultPayload = {
-    kpis: { cpi: "1.03", spi: "0.98", cmmc: "96.4%", hops: "34.2%" },
+    generatedAtUtc: "2026-11-18T18:15:00Z",
+    kpis: {
+      cpi: "1.03",
+      cpiSub: "Under Budget (+2.6% / +$83,800 Variance)",
+      spi: "0.98",
+      spiSub: "ERP Cutover Track: Minor Drift (-2.1%)",
+      cmmc: "96.4%",
+      cmmcSub: "106 / 110 Controls Verified (4 POA&Ms)",
+      hops: "71.3%",
+      hopsSub: "Top 2 Categories = 54.0% of SLA Breaches"
+    },
+    complianceRows: [
+      {
+        controlId: "3.13.11",
+        domain: "FIPS 140-2/3 Validated Cryptography Enforcement",
+        enclave: "enclave-cui-prod",
+        artifact: "Invoke-EnclaveReadOnlyDiscovery.ps1",
+        statusClass: "pass",
+        status: "PASS (RSA-HSM 4096-BIT)"
+      },
+      {
+        controlId: "3.5.3",
+        domain: "Phishing-Resistant MFA for Privileged Admins",
+        enclave: "org-enterprise-it",
+        artifact: "identity_conditional_access.tf",
+        statusClass: "pass",
+        status: "PASS (FIDO2 / PIV ENFORCED)"
+      },
+      {
+        controlId: "3.4.1",
+        domain: "CMDB Orphan CI & Baseline Drift Detection",
+        enclave: "site-mfg-01",
+        artifact: "gold_pareto_bottlenecks.csv",
+        statusClass: "warn",
+        status: "4 POA&M ITEMS (28 ORPHAN CIs)"
+      },
+      {
+        controlId: "FINOPS-01",
+        domain: "Infracost PR Monthly Delta Threshold (< 8.0%)",
+        enclave: "enclave-cui-prod",
+        artifact: "finops_infracost_gate.json",
+        statusClass: "pass",
+        status: "PASS (+4.69% | $17,190/mo)"
+      }
+    ],
     pareto: {
-      labels: ["GCC-High MFA Provisioning", "IFS ERP Role Entitlement", "Aras PLM CAD Vault Sync", "MID Server Timeout", "OT VLAN Firewall"],
+      labels: ["GCC-High-MFA-Provisioning", "IFS-ERP-Role-Entitlement", "Aras-PLM-CAD-Vault-Sync", "MID-Server-Credential-Timeout", "OT-VLAN-Firewall-Exception"],
       breaches: [103, 95, 64, 46, 40],
       cumulativePct: [38.0, 67.8, 78.6, 89.2, 96.1]
     },
@@ -213,10 +267,34 @@
       if (res.ok) data = await res.json();
     } catch (_) { /* Fallback to embedded synthetic metrics when opened via file:// */ }
 
+    if (data.generatedAtUtc) {
+      document.getElementById("last-build-pill").textContent = `Last Pipeline Run: ${data.generatedAtUtc}`;
+    }
+
     document.getElementById("kpi-cpi").textContent = data.kpis.cpi;
+    if (data.kpis.cpiSub) document.getElementById("kpi-cpi-sub").textContent = data.kpis.cpiSub;
+
     document.getElementById("kpi-spi").textContent = data.kpis.spi;
+    if (data.kpis.spiSub) document.getElementById("kpi-spi-sub").textContent = data.kpis.spiSub;
+
     document.getElementById("kpi-cmmc").textContent = data.kpis.cmmc;
+    if (data.kpis.cmmcSub) document.getElementById("kpi-cmmc-sub").textContent = data.kpis.cmmcSub;
+
     document.getElementById("kpi-hops").textContent = data.kpis.hops;
+    if (data.kpis.hopsSub) document.getElementById("kpi-hops-sub").textContent = data.kpis.hopsSub;
+
+    if (Array.isArray(data.complianceRows)) {
+      const tbody = document.getElementById("compliance-table");
+      tbody.innerHTML = data.complianceRows.map(row => `
+        <tr>
+          <td><code>${row.controlId}</code></td>
+          <td>${row.domain}</td>
+          <td><code>${row.enclave}</code></td>
+          <td><code>${row.artifact}</code></td>
+          <td><span class="pill ${row.statusClass}">${row.status}</span></td>
+        </tr>
+      `).join("");
+    }
 
     new Chart(document.getElementById("paretoChart"), {
       type: "bar",
@@ -232,7 +310,7 @@
             yAxisID: "y"
           },
           {
-            label: "Cumulative %",
+            label: "Cumulative MTTR Friction %",
             data: data.pareto.cumulativePct,
             type: "line",
             borderColor: "#f59e0b",
@@ -248,7 +326,7 @@
         plugins: { legend: { labels: { color: "#e2e8f0" } } },
         scales: {
           x: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" } },
-          y: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" }, title: { display: true, text: "Ticket Count", color: "#94a3b8" } },
+          y: { ticks: { color: "#94a3b8" }, grid: { color: "#1e293b" }, title: { display: true, text: "SLA Breaches", color: "#94a3b8" } },
           y1: { position: "right", min: 0, max: 100, ticks: { color: "#f59e0b" }, grid: { drawOnChartArea: false } }
         }
       }
