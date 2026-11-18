@@ -1,11 +1,15 @@
 # Defense Manufacturing Enterprise Blueprint & Day-1 Execution Architecture
 
+[![CMMC Level 2 CI Gate](https://github.com/FreeFades2Black/defense-manufacturing-enterprise-blueprint/actions/workflows/ci-compliance-gate.yml/badge.svg)](https://github.com/FreeFades2Black/defense-manufacturing-enterprise-blueprint/actions/workflows/ci-compliance-gate.yml)
+[![Sanitization Gate](https://img.shields.io/badge/Sanitization_Gate-RFC--5737_Verified-8957e5?style=flat-square)](scripts/verify_sanitization.py)
 [![NIST SP 800-171 Rev 2](https://img.shields.io/badge/NIST_SP_800--171_Rev_2-110_Controls-003366?style=flat-square)](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)
 [![CMMC Level 2](https://img.shields.io/badge/CMMC_2.0-Level_2_(Advanced)-1f6feb?style=flat-square)](https://dodcio.defense.gov/CMMC/)
-[![ITIL 4 & PMI](https://img.shields.io/badge/Governance-ITIL_4_%7C_PMI_EVM-2ea043?style=flat-square)](#2-unified-role-mandate-technical-authority--program-governance)
-[![Sanitization Verified](https://img.shields.io/badge/Sanitization-RFC--5737_Strict-8957e5?style=flat-square)](#1-repository--modular-architecture-specification)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B_%7C_PySpark-3776AB?style=flat-square)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2ea043?style=flat-square)](LICENSE)
 
-> **Agent Context & Purpose**: This repository defines a vendor-neutral, strictly sanitized reference architecture and Day-1 operational execution plan for a hybrid **Technical Program Manager / Senior Systems Engineer** operating within a DoD-regulated manufacturing enterprise (**NIST SP 800-171 Rev 2 / CMMC Level 2**). It integrates **Infrastructure-as-Code (IaC)**, **Lakehouse ITSM/OT telemetry**, **Policy-as-Code compliance gates**, and **structured Day-1 reconnaissance protocols**.
+## Executive Summary
+
+Enterprise modernization inside a DoD-regulated manufacturing environment (**NIST SP 800-171 Rev 2 / CMMC Level 2**) fails when program governance and systems engineering operate in separate silos. This repository provides a vendor-neutral, strictly sanitized reference architecture and **Day-1 to Day-30 execution system** unifying **CMMC Level 2 Infrastructure-as-Code (Terraform + PowerShell DSC)**, **Bronze/Silver/Gold Medallion ITSM & CMDB telemetry (PySpark + Delta Lake)**, **Policy-as-Code compliance and FinOps gates (OPA/Rego + Infracost)**, and a **Unified Executive Command Gateway (Streamlit / Databricks App)** for ERP (IFS Cloud) and PLM (Aras Innovator) transformations.
 
 ---
 
@@ -13,40 +17,120 @@
 
 ```mermaid
 flowchart TB
-    subgraph W1["Week-1 Reconnaissance ('Request for Access, Pull for Truth')"]
-        SN["ServiceNow Table API / Raw Exports\n(incident, sc_req_item, change_request, sys_audit)"]
-        AD["Entra ID & Active Directory\n(Read-Only PowerShell Discovery)"]
-        VM["Windows Server & Virtualization\n(Compute/Storage Headroom & Patch Logs)"]
-        MID["CMDB & MID Server Logs\n(Orphaned CIs & Discovery Timeouts)"]
+    subgraph W1["Week-1 Reconnaissance: Request for Access, Pull for Truth"]
+        SN["ServiceNow Table API and Raw Exports (incident, sc_req_item, change_request, sys_audit)"]
+        AD["Entra ID GCC High and Active Directory (Read-Only PowerShell Discovery)"]
+        VM["Windows Server and Hypervisor Clusters (Headroom, FIPS 140-2/3, SMBv3, Patching)"]
+        MID["CMDB and MID Server Logs (Orphaned CIs and WinRM-5986 Timeouts)"]
     end
 
-    subgraph M01["01-cmmc-enclave-iac (CMMC L2 Enclave Baseline)"]
-        TF["Modular Terraform\n(enclave-cui-prod / 192.0.2.0/24)"]
-        DSC["PowerShell DSC & TLS Lifecycle\n(FIPS 140-2/3, SMBv3, Audit Policy)"]
+    subgraph M01["01-cmmc-enclave-iac: CMMC Level 2 Enclave Baseline"]
+        TF["Modular Terraform Enclave (enclave-cui-prod / 192.0.2.0/24)"]
+        DSC["PowerShell DSC Hardening and TLS 4096-bit RSA-HSM Lifecycle"]
     end
 
-    subgraph M02["02-itsm-medallion-telemetry (Medallion Lakehouse)"]
-        BRZ["Bronze Layer\n(Raw Immutable Ingestion)"]
-        SLV["Silver Layer\n(Hop Count, Ping-Pong & Orphan Flagging)"]
-        GLD["Gold Layer\n(80/20 Bottleneck Ranking & SLA Breach KPI)"]
+    subgraph M02["02-itsm-medallion-telemetry: Medallion Lakehouse"]
+        ADP["TelemetrySourceAdapter (--source synthetic | servicenow-csv | servicenow-api)"]
+        BRZ["Bronze Layer (Immutable Raw Ingestion)"]
+        SLV["Silver Layer (3+ Hop Ping-Pong Reconstruction and CMDB Orphan Joins)"]
+        GLD["Gold Layer (80/20 Pareto Bottleneck Ranking and sys_audit Handoff Matrix)"]
     end
 
-    subgraph M03["03-policy-as-code-governance (Compliance & FinOps Gate)"]
-        OPA["OPA / Rego Policies\n(Zero-Trust & NIST 800-171 Gates)"]
-        FIN["Infracost Budget Gate\n(CPI/SPI Cost Drift Prevention)"]
-        DOS["Automated Security Dossier\n(SSP / POA&M Evidence Markdown + JSON)"]
+    subgraph M03["03-policy-as-code-governance: Continuous Compliance and FinOps Gate"]
+        OPA["OPA / Rego Policies (Zero-Trust NSG, 365d SIEM, FIPS Key Vault Gates)"]
+        FIN["Infracost FinOps Gate ($18.5k/mo Ceiling and CPI Drift Prevention)"]
+        DOS["Automated Security Dossier (SSP and POA&M Evidence Markdown + JSON)"]
     end
 
-    subgraph M04["04-program-command-gateway (Readiness Control Plane)"]
-        APP["Streamlit / Databricks App\n(EVM CPI/SPI, RAID Register, ERP/PLM Cutover)"]
+    subgraph M04["04-program-command-gateway: Transformation Control Plane"]
+        APP["Streamlit / Databricks App (Earned Value CPI/SPI, RAID Register, Cutover Gates)"]
     end
 
-    SN & AD & VM & MID --> BRZ
-    BRZ --> SLV --> GLD
+    SN & AD & VM & MID --> ADP
+    ADP --> BRZ --> SLV --> GLD
     TF & DSC --> OPA & FIN
     OPA & FIN --> DOS
     GLD & DOS --> APP
 ```
+
+### Operational Command Gateway (`04-program-command-gateway`) — Live Dashboard Preview
+
+![Operational Command Gateway Preview](docs/assets/command_gateway_preview.png)
+
+---
+
+## Proof of Quality: Sample Generated Compliance Dossier & Medallion Pareto Output
+
+Every push and pull request runs [`ci-compliance-gate.yml`](.github/workflows/ci-compliance-gate.yml) via `make bootstrap && make pipeline && make audit`. Expand the sections below (or view [`docs/SAMPLE_SECURITY_DOSSIER.md`](docs/SAMPLE_SECURITY_DOSSIER.md)) to inspect the actual deterministic outputs generated by the pipeline:
+
+<details>
+<summary><strong>1. View Sample Automated CMMC Level 2 Security Compliance Dossier (Module 03 Output)</strong></summary>
+
+Generated automatically by [`03-policy-as-code-governance/generate_security_dossier.py`](03-policy-as-code-governance/generate_security_dossier.py) (`data/gold/SECURITY_COMPLIANCE_DOSSIER.md` & `data/gold/security_compliance_dossier.json`):
+
+| NIST SP 800-171 Control | Control Family | Technical Requirement | Artifact Verified | ITIL 4 / PMI Outcome | Status |
+| :--- | :--- | :--- | :--- | :--- | :---: |
+| `3.1.1 / 3.5.3` | Access Control & Identification/Auth | Phishing-resistant MFA (FIDO2/PIV) & compliant device Conditional Access for `enclave-cui-prod` | `01-cmmc-enclave-iac/identity_conditional_access.tf` | ITIL 4 Access Mgmt / Zero Unauthorized CUI Sessions | **PASS** |
+| `3.3.1 / 3.3.2` | Audit and Accountability | Immutable SIEM audit workspace with >=365-day log retention and disabled public ingestion | `01-cmmc-enclave-iac/main.tf` | ITIL 4 Information Security Mgmt / C3PAO Audit Evidence | **PASS** |
+| `3.4.1 / 3.4.2` | Configuration Management | Mandatory CMDB/FinOps tagging and Windows Server DSC hardening (SMBv1 disabled, SMBv3 signed) | `01-cmmc-enclave-iac/powershell/EnclaveServerBaselineDSC.ps1` | ITIL 4 Service Configuration Mgmt / Drift Prevention | **PASS** |
+| `3.8.9` | Media Protection & Recovery | Locked immutable GeoRedundant Recovery Services Vault with public network access disabled | `01-cmmc-enclave-iac/main.tf` | ITIL 4 Service Continuity Mgmt / ERP & PLM Cutover Rollback Safety | **PASS** |
+| `3.13.1 / 3.13.6` | System & Communications Protection | Default-deny NSG micro-segmentation across RFC-5737 zones (`192.0.2.0/24`, `198.51.100.0/24`) | `01-cmmc-enclave-iac/network_enclave.tf` | ITIL 4 Infrastructure & Platform Mgmt / Enclave Boundary Isolation | **PASS** |
+| `3.13.8 / 3.13.11` | Cryptographic Protection | FIPS 140-2/3 HSM-backed Premium Key Vault, 4096-bit RSA-HSM TLS certs, and Windows FIPS policy | `01-cmmc-enclave-iac/keyvault_tls.tf` | PMI Technical Risk Mitigation / Zero Expired Cert Cutover Outages | **PASS** |
+
+</details>
+
+<details>
+<summary><strong>2. View Sample Gold Layer Top-5 Pareto ITSM Queue Bottlenecks & sys_audit Handoff Telemetry (Module 02 Output)</strong></summary>
+
+Generated automatically by [`02-itsm-medallion-telemetry/pipeline.py`](02-itsm-medallion-telemetry/pipeline.py) (`data/gold/gold_pareto_bottlenecks.csv`):
+
+| Subcategory | 90d Tickets | Avg Reassignment Hops | Avg MTTR (Hrs) | Total MTTR (Hrs) | SLA Breach Rate | Cumulative Friction Share |Assignment Group Ping-Pong Path |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| `GCC-High-MFA-Provisioning` | 112 | 4.46 | 93.89 | 10,515.46 | 100.0% | **37.5%** | `Corp-IT-Tier1 -> Org-Identity-Ops -> Enclave-SecOps -> Site-MFG-01-IT` |
+| `IFS-ERP-Role-Entitlement` | 88 | 4.02 | 83.20 | 7,321.52 | 100.0% | **63.7%** | `Corp-IT-Tier1 -> Site-MFG-01-IT -> Enclave-SecOps -> ERP-Platform-Team` |
+| `MID-Server-Credential-Timeout` | 53 | 3.96 | 56.83 | 3,012.22 | 98.1% | **74.4%** | `Corp-IT-Tier1 -> Corp-SNOW-Admins -> Enclave-SecOps -> Site-MFG-01-IT` |
+| `Aras-PLM-CAD-Vault-Sync` | 58 | 2.97 | 45.77 | 2,654.68 | 100.0% | **83.9%** | `Site-MFG-01-IT -> Corp-Storage-Team -> PLM-Engineering-Support` |
+| `OT-VLAN-Firewall-Exception` | 52 | 2.83 | 43.39 | 2,256.37 | 92.3% | **91.9%** | `Site-MFG-01-IT -> Corp-Network-Eng -> Enclave-SecOps` |
+
+> **Diagnostic Finding**: Just **3 subcategories** (`GCC-High-MFA-Provisioning`, `IFS-ERP-Role-Entitlement`, and `MID-Server-Credential-Timeout`) account for **74.4% of total MTTR queue hours** due to 4+ hop ticket ping-ponging across corporate and enclave boundaries.
+
+</details>
+
+---
+
+## Single-Command Quickstart (`Makefile`)
+
+The root [`Makefile`](Makefile) provides a single-command developer experience for bootstrapping, executing the Medallion and Policy-as-Code pipelines, running the compliance/sanitization test suite, and launching the Streamlit Command Gateway:
+
+```bash
+# 1. Install dependencies & generate 90-day synthetic ServiceNow (incident, sc_req_item, change_request, sys_audit) + CMDB fixtures
+make bootstrap
+
+# 2. Run Module 02 Medallion Lakehouse transformations + Module 03 CMMC Security Dossier & Infracost FinOps gates
+make pipeline
+
+# 3. Run RFC-5737 sanitization audit, git log hygiene check, syntax/lint verification, and pytest suite
+make audit
+
+# 4. Launch Module 04 Streamlit Transformation & Readiness Command Gateway on port 8501
+make gateway
+```
+
+### Seamless Transition from Day-1 Synthetic Sandbox to Day-30 Live Telemetry
+[`02-itsm-medallion-telemetry/pipeline.py`](02-itsm-medallion-telemetry/pipeline.py) implements a pluggable `TelemetrySourceAdapter` configured via [`02-itsm-medallion-telemetry/config.example.yaml`](02-itsm-medallion-telemetry/config.example.yaml) so the exact same pipeline code transitions untouched from Day-1 sandbox testing to Day-3 read-only CSV exports and Day-30 ServiceNow Table API ingestion:
+
+```bash
+# Day 1: Run against deterministic synthetic fixtures
+python3 02-itsm-medallion-telemetry/pipeline.py --source synthetic
+
+# Day 3: Run against approved 90-day ServiceNow CSV exports dropped into data/raw/
+python3 02-itsm-medallion-telemetry/pipeline.py --source servicenow-csv --config 02-itsm-medallion-telemetry/config.example.yaml
+
+# Day 30: Run against scoped read-only ServiceNow Table API service principal (svc-snow-telemetry-ro@example-mfg.local)
+SNOW_RO_API_TOKEN="..." python3 02-itsm-medallion-telemetry/pipeline.py --source servicenow-api --config 02-itsm-medallion-telemetry/config.example.yaml
+```
+
+> **Environment Governance Note (`pyproject.toml` vs. `requirements.txt`)**: [`pyproject.toml`](pyproject.toml) is the canonical source of truth for project metadata, optional PySpark/Delta Lake dependencies (`pip install .[spark]`), pytest configuration, and Ruff linter rules. [`requirements.txt`](requirements.txt) is maintained specifically as a strictly bounded manifest for **air-gapped / offline wheelhouse caching** (`pip download -r requirements.txt -d ./wheelhouse`) inside CMMC Level 2 enclave boundaries (`enclave-cui-prod`) where outbound public PyPI internet egress is blocked.
 
 ---
 
@@ -83,7 +167,7 @@ Rather than being deployed directly into a production enclave, these modules ser
 | Module Directory | Module Title | Core Technical & Governance Scope |
 | :--- | :--- | :--- |
 | [`01-cmmc-enclave-iac/`](01-cmmc-enclave-iac/) | **CMMC Level 2 Hybrid Enclave Baseline** | Modular Terraform and PowerShell DSC/hardening scripts mapped to NIST SP 800-171 Rev 2 controls, Entra ID / Active Directory conditional access, Windows Server/virtualization baselines, and automated TLS certificate lifecycle checks. |
-| [`02-itsm-medallion-telemetry/`](02-itsm-medallion-telemetry/) | **ITSM Queue & Bottleneck Lakehouse** | PySpark + Delta Lake (with local analytical engine execution & Jupyter/Databricks notebook) Bronze/Silver/Gold ingestion pipeline using synthetic ServiceNow ticket schemas (`incident`, `sc_req_item`, `sc_task`, `change_request`, `sys_audit`) to detect multi-hop ticket reassignments, SLA breach risks, and CMDB orphan rates. |
+| [`02-itsm-medallion-telemetry/`](02-itsm-medallion-telemetry/) | **ITSM Queue & Bottleneck Lakehouse** | PySpark + Delta Lake (with local analytical engine execution, pluggable Source Adapter, & Jupyter/Databricks notebook) Bronze/Silver/Gold ingestion pipeline using synthetic ServiceNow ticket schemas (`incident`, `sc_req_item`, `sc_task`, `change_request`, `sys_audit`) to detect multi-hop ticket reassignments, SLA breach risks, and CMDB orphan rates. |
 | [`03-policy-as-code-governance/`](03-policy-as-code-governance/) | **Continuous Compliance & FinOps Gate** | OPA/Rego zero-trust policy checks paired with automated Markdown/JSON Security Dossier generation and Infracost PR diffs to enforce budget guardrails and audit readiness in CI/CD. |
 | [`04-program-command-gateway/`](04-program-command-gateway/) | **Transformation & Readiness Control Plane** | Streamlit / Databricks App operational gateway displaying synthetic Earned Value metrics (CPI/SPI), RAID risk registers, and cutover readiness checklists for ERP/PLM modernization. |
 
@@ -139,9 +223,9 @@ Execute the first 10 business days using a disciplined, parallel reconnaissance 
 
 ```mermaid
 flowchart LR
-    D1["Days 1–2:\nAccess & Governance Requests\n(ServiceNow, AD/Entra, SSP/POA&M, SOWs)"] --> D3["Days 3–7:\nDirect Telemetry & Pipeline Ingestion\n(90-Day Queue Export + PowerShell Discovery)"]
-    D3 --> D8["Days 7–9:\nMedallion Lakehouse Analysis\n(Rank Top 20% Categories Driving 80% Friction)"]
-    D8 --> D10["Day 10:\nExecutive & Engineering Alignment Briefing\n(Empirical Bottlenecks + 30-Day Quick-Win Roadmap)"]
+    D1["Days 1 to 2: Access and Governance Requests (ServiceNow, AD/Entra, SSP/POA&M, SOWs)"] --> D3["Days 3 to 7: Direct Telemetry and Pipeline Ingestion (90-Day Queue Export + PowerShell Discovery)"]
+    D3 --> D8["Days 7 to 9: Medallion Lakehouse Analysis (Rank Top 20% Categories Driving 80% Friction)"]
+    D8 --> D10["Day 10: Executive and Engineering Alignment Briefing (Empirical Bottlenecks + 30-Day Quick-Win Roadmap)"]
 ```
 
 1. **Days 1–2 (Access & Governance Requests)**:
@@ -151,42 +235,3 @@ flowchart LR
    - Feed the extracted datasets into the [`02-itsm-medallion-telemetry/`](02-itsm-medallion-telemetry/) Bronze/Silver/Gold pipeline to rank the **top 20% of ticket categories and infrastructure gaps driving 80% of operational friction**.
 3. **Day 10 (Executive & Engineering Alignment Briefing)**:
    - Enter the initial alignment review with the Hiring Manager / Program Sponsor and Infrastructure/Security leads holding both their official governance artifacts (SSP, POA&M, SOWs, network diagrams) and your verified hard telemetry—presenting exact metrics on where tickets stall, where CMDB/infrastructure gaps sit, and the **30-day quick-win remediation roadmap**.
-
----
-
-## 6. Quickstart: Run the Blueprint Out-of-the-Box
-
-### Step 1: Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### Step 2: Generate Deterministic 90-Day Synthetic Telemetry & CMDB Fixtures
-Generates realistic 90-day ServiceNow `incident`, `sc_req_item`, `sc_task`, `change_request`, `sys_audit` logs (with multi-hop reassignments and SLA breaches), CMDB server inventory (`cmdb_ci_inventory`), and ERP/PLM EVM/RAID fixtures:
-```bash
-python3 scripts/generate_synthetic_telemetry.py
-```
-
-### Step 3: Execute the ITSM & CMDB Medallion Lakehouse Pipeline
-Runs the Bronze -> Silver -> Gold analytical transformations and produces the Week-1 Pareto bottleneck report and Gold KPI tables:
-```bash
-python3 02-itsm-medallion-telemetry/pipeline.py
-```
-
-### Step 4: Run Continuous Compliance & FinOps Governance Gate
-Evaluates CMMC Level 2 infrastructure compliance and Infracost budget guardrails, outputting a timestamped Markdown and JSON **Security Dossier**:
-```bash
-python3 03-policy-as-code-governance/generate_security_dossier.py
-python3 03-policy-as-code-governance/evaluate_finops_gate.py
-```
-
-### Step 5: Launch the Transformation & Readiness Control Plane (Streamlit / Databricks App)
-```bash
-./04-program-command-gateway/launch_gateway.sh
-```
-
-### Step 6: Verify Sanitization & Run Automated Test Suite
-```bash
-python3 scripts/verify_sanitization.py
-pytest -v
-```
