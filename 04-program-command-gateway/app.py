@@ -55,12 +55,12 @@ def render_app() -> None:
     col1.metric(
         "Portfolio CPI (Cost)",
         f"{evm['portfolio_cpi']:.2f}",
-        f"${evm['cost_variance_usd']:+,}",
+        f"${evm['cost_variance_usd']:+,} CV",
     )
     col2.metric(
         "Portfolio SPI (Schedule)",
         f"{evm['portfolio_spi']:.2f}",
-        f"${evm['schedule_variance_usd']:+,}",
+        f"${evm['schedule_variance_usd']:+,} SV",
     )
     col3.metric(
         "90d Ping-Pong Rate (>=3 Hops)",
@@ -86,6 +86,22 @@ def render_app() -> None:
     )
 
     st.divider()
+
+    # Visual Charts Row: Workstream CPI/SPI vs 80/20 Pareto MTTR Friction Hours
+    chart_left, chart_right = st.columns(2)
+    with chart_left:
+        st.markdown("**Earned Value Index Comparison (`CPI` vs `SPI` by Workstream)**")
+        ws_chart_df = pd.DataFrame(state["program"]["workstreams"])[
+            ["workstream_id", "cpi", "spi"]
+        ].set_index("workstream_id")
+        st.bar_chart(ws_chart_df, height=210)
+
+    with chart_right:
+        st.markdown("**80/20 Pareto Queue Friction (`Total MTTR Hours` by Subcategory)**")
+        pareto_chart_df = pd.DataFrame(med["top_pareto_bottlenecks"])[
+            ["subcategory", "total_mttr_hours"]
+        ].set_index("subcategory")
+        st.bar_chart(pareto_chart_df, height=210)
 
     # Single-Screen Executive Command Quadrant (2x2 Grid)
     left_top, right_top = st.columns(2)
