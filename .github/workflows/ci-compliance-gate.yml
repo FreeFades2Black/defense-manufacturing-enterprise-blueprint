@@ -31,24 +31,11 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      - name: Bootstrap Dependencies & 90-Day Synthetic Telemetry
+        run: make bootstrap
 
-      - name: Generate Deterministic 90-Day Synthetic Telemetry & CMDB Fixtures
-        run: python scripts/generate_synthetic_telemetry.py
+      - name: Execute Medallion Lakehouse Pipeline & Policy-as-Code Gates
+        run: make pipeline
 
-      - name: Run ITSM Medallion Lakehouse Pipeline (Bronze -> Silver -> Gold)
-        run: python 02-itsm-medallion-telemetry/pipeline.py
-
-      - name: Generate CMMC Level 2 Security Dossier & FinOps Gate Evaluation
-        run: |
-          python 03-policy-as-code-governance/generate_security_dossier.py
-          python 03-policy-as-code-governance/evaluate_finops_gate.py
-
-      - name: Enforce Strict Sanitization (RFC-5737 IPs & NIST/ITIL/PMI Metadata Headers)
-        run: python scripts/verify_sanitization.py
-
-      - name: Execute Pytest Verification Suite
-        run: pytest -v
+      - name: Run Sanitization, Linter & Pytest Verification Audit
+        run: make audit

@@ -1,7 +1,7 @@
 # Automated CMMC Level 2 & NIST SP 800-171 Security Compliance Dossier
 
 - **Dossier ID**: `DOSSIER-CMMC-L2-2026-Q4`
-- **Generated (UTC)**: `2026-11-17T21:50:56Z`
+- **Generated (UTC)**: `2026-11-18T18:06:23Z`
 - **Enclave Scope**: `enclave-cui-prod` | `site-mfg-01` | `example-mfg.local`
 - **CI/CD Policy Gate Status**: **PASSED** (6/6 Control Groups Verified — 100.0%)
 
