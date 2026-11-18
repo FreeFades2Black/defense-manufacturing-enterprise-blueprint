@@ -20,6 +20,7 @@ jobs:
   compliance-and-telemetry-gate:
     name: Verify RFC-5737 Sanitization, NIST 800-171 Dossier & Medallion Lakehouse
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout Repository
