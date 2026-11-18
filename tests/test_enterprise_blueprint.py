@@ -136,3 +136,5 @@ def test_github_pages_dashboard_data_reconciliation() -> None:
     assert "spiSub" in payload["kpis"]
     assert "hopsSub" in payload["kpis"]
     assert len(payload["complianceRows"]) == 4
+    assert len(payload["enclaveReadiness"]["labels"]) == 6
+    assert len(payload["raidRegister"]) == 5

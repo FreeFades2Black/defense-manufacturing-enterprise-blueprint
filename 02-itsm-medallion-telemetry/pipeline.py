@@ -321,6 +321,7 @@ def run_medallion_pipeline(
     cmmc_score_pct = round((verified_nist_controls / total_nist_controls) * 100.0, 1)
 
     dashboard_payload = {
+        "generatedAt": summary_payload["generated_at_utc"],
         "generatedAtUtc": summary_payload["generated_at_utc"],
         "kpis": {
             "cpi": f"{cpi_val:.2f}",
@@ -376,6 +377,77 @@ def run_medallion_pipeline(
             "cpi": [0.99, 1.00, 1.01, 1.02, 1.01, 1.03, 1.04, cpi_val],
             "spi": [0.95, 0.96, 0.95, 0.97, 0.98, 0.97, 0.98, spi_val],
         },
+        "enclaveReadiness": {
+            "labels": [
+                "Compute & Storage Headroom",
+                "OS & Hypervisor Patching",
+                "FIPS 140-2/3 Cryptography",
+                "Entra / AD MFA Hygiene",
+                "CMDB Asset Coverage",
+                "Immutable Backup & DR",
+            ],
+            "actual": [
+                97,
+                int(round(summary_payload["cmdb_and_mid_kpis"]["os_patch_compliance_pct"])),
+                100,
+                98,
+                int(round(100.0 - summary_payload["cmdb_and_mid_kpis"]["orphan_ci_rate_pct"])),
+                96,
+            ],
+            "target": [95, 95, 100, 98, 95, 95],
+        },
+        "raidRegister": [
+            {
+                "id": "POAM-001",
+                "type": "POA&M",
+                "ref": "NIST 3.4.1",
+                "description": f"{summary_payload['cmdb_and_mid_kpis']['orphan_ci_rate_pct']}% of manufacturing floor endpoints in site-mfg-01 lack automated ServiceNow MID Server CMDB correlation.",
+                "owner": "Site IT / ITSM Lead",
+                "dueDate": "Day +21",
+                "severity": "HIGH",
+                "status": "In Progress — MID gMSA credential scope submitted",
+            },
+            {
+                "id": "RISK-014",
+                "type": "Risk",
+                "ref": "ERP-CUT-02",
+                "description": "Multi-hop ITSM ticket routing between org-enterprise-it and enclave-cui-prod delays ERP role provisioning during UAT.",
+                "owner": "TPM / ServiceNow Admin",
+                "dueDate": "Day +14",
+                "severity": "HIGH",
+                "status": "Mitigating — Auto-routing catalog rule staged",
+            },
+            {
+                "id": "POAM-002",
+                "type": "POA&M",
+                "ref": "NIST 3.11.2",
+                "description": "Legacy PLM staging VM requires TLS 1.3 cipher suite enforcement and self-signed cert replacement.",
+                "owner": "Enclave SysEng",
+                "dueDate": "Day +30",
+                "severity": "MEDIUM",
+                "status": "Scheduled — Change Request CHG001042",
+            },
+            {
+                "id": "DEP-007",
+                "type": "Dependency",
+                "ref": "GCC-HIGH-01",
+                "description": "Cross-tenant Entra ID B2B collaboration policy approval required from Corporate InfoSec prior to vendor cutover.",
+                "owner": "Enclave ISSM",
+                "dueDate": "Day +10",
+                "severity": "MEDIUM",
+                "status": "Active — Shared Responsibility Matrix under review",
+            },
+            {
+                "id": "ISS-003",
+                "type": "Issue",
+                "ref": "PATCH-09",
+                "description": "Two hypervisor nodes in site-mfg-01 missed monthly maintenance window due to continuous shop-floor batch run.",
+                "owner": "Site IT Ops",
+                "dueDate": "Day +7",
+                "severity": "LOW",
+                "status": "Resolved — Rolling drain window locked",
+            },
+        ],
     }
     (gold_dir / "dashboard-data.json").write_text(
         json.dumps(dashboard_payload, indent=2), encoding="utf-8"

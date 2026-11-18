@@ -1,5 +1,6 @@
 {
-  "generatedAtUtc": "2026-11-18T18:19:53Z",
+  "generatedAt": "2026-11-18T18:23:31Z",
+  "generatedAtUtc": "2026-11-18T18:23:31Z",
   "kpis": {
     "cpi": "1.03",
     "cpiSub": "Under Budget (+2.6% / $+83,800 Variance)",
@@ -98,5 +99,83 @@
       0.98,
       0.98
     ]
-  }
+  },
+  "enclaveReadiness": {
+    "labels": [
+      "Compute & Storage Headroom",
+      "OS & Hypervisor Patching",
+      "FIPS 140-2/3 Cryptography",
+      "Entra / AD MFA Hygiene",
+      "CMDB Asset Coverage",
+      "Immutable Backup & DR"
+    ],
+    "actual": [
+      97,
+      87,
+      100,
+      98,
+      77,
+      96
+    ],
+    "target": [
+      95,
+      95,
+      100,
+      98,
+      95,
+      95
+    ]
+  },
+  "raidRegister": [
+    {
+      "id": "POAM-001",
+      "type": "POA&M",
+      "ref": "NIST 3.4.1",
+      "description": "23.3% of manufacturing floor endpoints in site-mfg-01 lack automated ServiceNow MID Server CMDB correlation.",
+      "owner": "Site IT / ITSM Lead",
+      "dueDate": "Day +21",
+      "severity": "HIGH",
+      "status": "In Progress \u2014 MID gMSA credential scope submitted"
+    },
+    {
+      "id": "RISK-014",
+      "type": "Risk",
+      "ref": "ERP-CUT-02",
+      "description": "Multi-hop ITSM ticket routing between org-enterprise-it and enclave-cui-prod delays ERP role provisioning during UAT.",
+      "owner": "TPM / ServiceNow Admin",
+      "dueDate": "Day +14",
+      "severity": "HIGH",
+      "status": "Mitigating \u2014 Auto-routing catalog rule staged"
+    },
+    {
+      "id": "POAM-002",
+      "type": "POA&M",
+      "ref": "NIST 3.11.2",
+      "description": "Legacy PLM staging VM requires TLS 1.3 cipher suite enforcement and self-signed cert replacement.",
+      "owner": "Enclave SysEng",
+      "dueDate": "Day +30",
+      "severity": "MEDIUM",
+      "status": "Scheduled \u2014 Change Request CHG001042"
+    },
+    {
+      "id": "DEP-007",
+      "type": "Dependency",
+      "ref": "GCC-HIGH-01",
+      "description": "Cross-tenant Entra ID B2B collaboration policy approval required from Corporate InfoSec prior to vendor cutover.",
+      "owner": "Enclave ISSM",
+      "dueDate": "Day +10",
+      "severity": "MEDIUM",
+      "status": "Active \u2014 Shared Responsibility Matrix under review"
+    },
+    {
+      "id": "ISS-003",
+      "type": "Issue",
+      "ref": "PATCH-09",
+      "description": "Two hypervisor nodes in site-mfg-01 missed monthly maintenance window due to continuous shop-floor batch run.",
+      "owner": "Site IT Ops",
+      "dueDate": "Day +7",
+      "severity": "LOW",
+      "status": "Resolved \u2014 Rolling drain window locked"
+    }
+  ]
 }
